@@ -1,0 +1,74 @@
+# =============== #
+
+# Unity generated #
+
+# =============== #
+
+SurpriseProject-client/Temp/
+
+SurpriseProject-client/Obj/
+
+SurpriseProject-client/UnityGenerated/
+
+SurpriseProject-client/Library/
+
+*.apk
+
+*.symbols.zip
+
+# ===================================== #
+
+# Visual Studio / MonoDevelop generated #
+
+# ===================================== #
+
+SurpriseProject-client/ExportedObj/
+
+*.svd
+
+*.userprefs
+
+*.csproj
+
+*.pidb
+
+*.suo
+
+*.sln
+
+*.user
+
+*.unityproj
+
+*.booproj
+
+
+
+# Visual Studio cache directory
+SurpriseProject-client/.vs/
+
+
+# ============ #
+
+# OS generated #
+
+# ============ #
+
+.DS_Store
+
+.DS_Store?
+
+._*
+
+.Spotlight-V100
+
+.Trashes
+
+ehthumbs.db
+
+Thumbs.db
+
+
+!*.dll
+
+SurpriseProject-client/Assets/Reference
