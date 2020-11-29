@@ -9,6 +9,7 @@
             "type": "unity",
             "path": "/e:/UnityProjects/SurpriseProject/SurpriseProject-client/Library/EditorInstance.json",
             "request": "launch"
+        },
         {
             "name": "Windows Player",
             "type": "unity",
