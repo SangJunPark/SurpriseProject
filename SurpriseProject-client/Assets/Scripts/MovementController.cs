@@ -15,7 +15,7 @@ public class MovementController : MonoBehaviour
     public float Accelation = 1;
     public float DashAccelation = 1;
 
-    public float MaxForwardVelocity = 2f;
+    public float MaxForwardVelocity = 5f;
     public float MaxStirVelocity = 2f;
 
 
@@ -46,8 +46,8 @@ public class MovementController : MonoBehaviour
         //Magnitude.z = Input.GetAxisRaw("Vertical");
         
         MousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        Debug.Log(Input.mousePosition);
-        Debug.Log(MousePos);
+        //Debug.Log(Input.mousePosition);
+        //Debug.Log(MousePos);
 
         
         //FrameVelocity.Set(0,0,0);
@@ -68,19 +68,19 @@ public class MovementController : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             //Magnitude.x = Mathf.Clamp(Magnitude.z + 0.01f, -0.1f,0.1f);
-            Velocity.x = -1;
+           // Velocity.x = -1;
         }
 
         if (Input.GetKey(KeyCode.A))
         {
             //Magnitude.x= Mathf.Clamp(Magnitude.z - 0.01f, -0.1f, 0.1f);
-            Velocity.x = 1;
+            //Velocity.x = 1;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && DashAccelation == 1)
         {
             //Magnitude.x= Mathf.Clamp(Magnitude.z - 0.01f, -0.1f, 0.1f);
-            DashAccelation = 50;
+            DashAccelation = 30;
         }
 
 
@@ -88,42 +88,88 @@ public class MovementController : MonoBehaviour
         // // Magnitude.z = Mathf.Abs(Magnitude.z) < 0.0001 ? 0 :  Magnitude.z;
         // // PhysicalVelocity.z = Mathf.Min(PhysicalVelocity.z + Magnitude.z, 0.1f);
         // // PhysicalVelocity.z = Mathf.Clamp(PhysicalVelocity.z -= Time.deltaTime, 0f, 0.1f);
-        Vector3 F = Velocity * Accelation * Mass;
+        Vector3 F = Velocity * Accelation * Mass * Time.fixedDeltaTime;
 
         if(DashAccelation > 1)
         {
-            DashAccelation -= (Time.fixedDeltaTime * 3f);
+            DashAccelation -= (Time.fixedDeltaTime * 60f);
             DashAccelation = Mathf.Max(1, DashAccelation);
-            F = Velocity * DashAccelation * Mass;
+            F = Velocity * DashAccelation * Mass * Time.fixedDeltaTime;
         }
-        
-        Magnitude += (F * Time.fixedDeltaTime * 0.1F * 8F);
+
+        if(Magnitude.z < 0.01f * MaxForwardVelocity * DashAccelation)
+            Magnitude += (F * Time.fixedDeltaTime * 0.1F * 8F);
         
         //Adjust Friction
         float MagnitudeForward = Mathf.Abs(Magnitude.z);
         float MagnitudeStir = Mathf.Abs(Magnitude.x);
 
-        Vector3 Friction = -Magnitude.normalized * GroundFriction * Time.fixedDeltaTime * 0.1f;
 
-        if(MagnitudeForward > 0.01f)
+        if(MagnitudeForward > 0f)
         {
             int Direction = Magnitude.z > 0 ? 1 : -1;
-            Magnitude.z += Friction.z;
+            float Friction = (Time.fixedDeltaTime * 0.01f * GroundFriction);
+            MagnitudeForward -= Friction;
+            Magnitude.z = Mathf.Max(0, MagnitudeForward) * Direction;
+            Debug.Log(MagnitudeForward);
         }else
             MagnitudeForward = 0;
 
         if(MagnitudeStir > 0.01f)
         {
             int Direction = Magnitude.z > 0 ? 1 : -1;
-            Magnitude.x += Friction.x * Stirring;
+            //Magnitude.x += Friction.x * Stirring;
         }
 
-        CharacterRigidbody.velocity = Magnitude;
-        animator.SetFloat("velocity", MagnitudeForward);
 
-        Vector3 mousePosition = UtilsClass.GetMouseWorldPosition();
-        Vector3 aimDir = (mousePosition - transform.position).normalized;
-        transform.eulerAngles = new Vector3(0, UtilsClass.GetAngleFromVectorFloat(aimDir), 0);
+        if(DashAccelation == 1)
+        {
+            Vector3 point = new Vector3();
+            Event currentEvent = Event.current;
+            Vector2 mousePos = new Vector2();
+
+            // Get the mouse position from Event.
+            // Note that the y position from Event is inverted.
+
+            mousePos.x = Input.mousePosition.x;
+            mousePos.y = cam.pixelHeight - Input.mousePosition.y;
+
+            point = cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, cam.nearClipPlane));
+            point = cam.WorldToScreenPoint(transform.position);
+
+            Vector3 aimDir = -(new Vector3(mousePos.x - point.x, 0, point.y - mousePos.y)).normalized;
+            //Debug.Log(aimDir);
+            Quaternion q = Quaternion.LookRotation(aimDir, Vector3.up);
+
+            //q = Quaternion.Lerp(transform.rotation, q, 0.1f);
+            //q.x = 0; q.z = 0;
+            transform.rotation = q;
+        }
+       
+        //transform.LookAt(transform.position + aimDir * 10);
+
+        transform.Translate(Magnitude);
+        //CharacterRigidbody.velocity = Magnitude;
+        animator.SetFloat("velocity", Mathf.Lerp(0, 1, MagnitudeForward / (MaxForwardVelocity * 0.01f)));
+
+        //Vector3 point = new Vector3();
+        //Event currentEvent = Event.current;
+        //Vector2 mousePos = new Vector2();
+
+        //// Get the mouse position from Event.
+        //// Note that the y position from Event is inverted.
+        //mousePos.x = currentEvent.mousePosition.x;
+        //mousePos.y = cam.pixelHeight - currentEvent.mousePosition.y;
+
+        //point = cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, cam.nearClipPlane));
+        //point = cam.WorldToScreenPoint(transform.position);
+
+        //Vector3 aimDir = -(new Vector3(mousePos.x - point.x, 0, mousePos.y - point.y)).normalized;
+        //Debug.Log(aimDir);
+        //transform.LookAt(transform.position + aimDir * 10);
+
+        //transform.LookAt(transform.position + aimDir * 10);
+        //transform.eulerAngles = new Vector3(0, UtilsClass.GetAngleFromVectorFloat(aimDir), 0);
 
 
         //     // rotation.y += Input.GetAxis("Mouse X") * 5f;
@@ -142,9 +188,9 @@ public class MovementController : MonoBehaviour
 
     void FixedUpdate() {
         //CharacterRigidbody.MovePosition(CharacterRigidbody.position + Magnitude * 10 * Time.fixedDeltaTime);
-        Vector2 lookDir = MousePos - new Vector2(CharacterRigidbody.position.x, CharacterRigidbody.position.z);
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        CharacterRigidbody.rotation = Quaternion.LookRotation(lookDir);
+        //Vector2 lookDir = MousePos - new Vector2(CharacterRigidbody.position.x, CharacterRigidbody.position.z);
+        //float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+        //CharacterRigidbody.rotation = Quaternion.LookRotation(lookDir);
     }
 
         public static Vector3 GetMouseWorldPosition() {
@@ -162,4 +208,14 @@ public class MovementController : MonoBehaviour
             Vector3 worldPosition = worldCamera.ScreenToWorldPoint(screenPosition);
             return worldPosition;
         }
+    void OnGUI()
+    {
+
+
+        //GUILayout.BeginArea(new Rect(20, 20, 250, 120));
+        //GUILayout.Label("Screen pixels: " + cam.pixelWidth + ":" + cam.pixelHeight);
+        //GUILayout.Label("Mouse position: " + mousePos);
+        //GUILayout.Label("World position: " + point.ToString("F3"));
+        //GUILayout.EndArea();
+    }
 }
