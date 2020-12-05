@@ -1,17 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Suproject.Utils;
 
 public class MovementController : MonoBehaviour
 {
-    Vector3 Magnitude;
-    Vector3 PhysicalVelocity;
+    [TextArea(1, 1)]
+    public string Text;
+    public Vector3 Magnitude;
+    public float GroundFriction = 1;
+
+    public float Stirring = 1;
+    public float Mass = 1;
+    public float Accelation = 1;
+    public float DashAccelation = 1;
+
+    public float MaxForwardVelocity = 2f;
+    public float MaxStirVelocity = 2f;
+
+
+    Vector3 Velocity;
     Vector3 Direction;
     Animator animator;
     Transform CharacterTR;
     Rigidbody CharacterRigidbody;
     Vector2 rotation = Vector2.zero;
     Vector2 MousePos;
+
+
 
     public Camera cam;
     // Start is called before the first frame update
@@ -26,8 +42,8 @@ public class MovementController : MonoBehaviour
     void Update()
     {
         //Magnitude.Set(0,0,0);
-        Magnitude.x = Input.GetAxisRaw("Horizontal");
-        Magnitude.z = Input.GetAxisRaw("Vertical");
+        //Magnitude.x = Input.GetAxisRaw("Horizontal");
+        //Magnitude.z = Input.GetAxisRaw("Vertical");
         
         MousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         Debug.Log(Input.mousePosition);
@@ -35,36 +51,80 @@ public class MovementController : MonoBehaviour
 
         
         //FrameVelocity.Set(0,0,0);
-        // Direction.Set(0,0,0);
+        Velocity.Set(0,0,0);
          
-        // if (Input.GetKey(KeyCode.W))
-        // {
-        //     Magnitude.z = Mathf.Clamp(Magnitude.z + 0.01f, -0.1f,0.1f);
-        //     Direction.z = 100;
-        // }
+        if (Input.GetKey(KeyCode.W))
+        {
+            //Magnitude.z = Mathf.Clamp(Magnitude.z + 0.01f, -0.1f,0.1f);
+            Velocity.z = 1;
+        }
 
-        // if (Input.GetKey(KeyCode.S))
-        // {
-        //     Magnitude.z = Mathf.Clamp(Magnitude.z - 0.01f, -0.1f, 0.1f);
-        //     Direction.z = -100;
-        // }
+        if (Input.GetKey(KeyCode.S))
+        {
+//            Magnitude.z = Mathf.Clamp(Magnitude.z - 0.01f, -0.1f, 0.1f);
+            Velocity.z = -1;
+        }
 
-        // if (Input.GetKey(KeyCode.D))
-        // {
-        //     Magnitude.x = Mathf.Clamp(Magnitude.z + 0.01f, -0.1f,0.1f);
-        //     Direction.x = 100;
-        // }
+        if (Input.GetKey(KeyCode.D))
+        {
+            //Magnitude.x = Mathf.Clamp(Magnitude.z + 0.01f, -0.1f,0.1f);
+            Velocity.x = -1;
+        }
 
-        // if (Input.GetKey(KeyCode.A))
-        // {
-        //     Magnitude.x= Mathf.Clamp(Magnitude.z - 0.01f, -0.1f, 0.1f);
-        //     Direction.x = -100;
-        // }
+        if (Input.GetKey(KeyCode.A))
+        {
+            //Magnitude.x= Mathf.Clamp(Magnitude.z - 0.01f, -0.1f, 0.1f);
+            Velocity.x = 1;
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            //Magnitude.x= Mathf.Clamp(Magnitude.z - 0.01f, -0.1f, 0.1f);
+            DashAccelation = 50;
+        }
+
+
         // // Magnitude.z = Magnitude.z > 0 ? Magnitude.z - Time.deltaTime*0.4f : Magnitude.z+ Time.deltaTime*0.4f;
         // // Magnitude.z = Mathf.Abs(Magnitude.z) < 0.0001 ? 0 :  Magnitude.z;
         // // PhysicalVelocity.z = Mathf.Min(PhysicalVelocity.z + Magnitude.z, 0.1f);
         // // PhysicalVelocity.z = Mathf.Clamp(PhysicalVelocity.z -= Time.deltaTime, 0f, 0.1f);
-        // // CharacterTR.Translate(Magnitude);
+        Vector3 F = Velocity * Accelation * Mass;
+
+        if(DashAccelation > 1)
+        {
+            DashAccelation -= (Time.fixedDeltaTime * 3f);
+            DashAccelation = Mathf.Max(1, DashAccelation);
+            F = Velocity * DashAccelation * Mass;
+        }
+        
+        Magnitude += (F * Time.fixedDeltaTime * 0.1F * 8F);
+        
+        //Adjust Friction
+        float MagnitudeForward = Mathf.Abs(Magnitude.z);
+        float MagnitudeStir = Mathf.Abs(Magnitude.x);
+
+        Vector3 Friction = -Magnitude.normalized * GroundFriction * Time.fixedDeltaTime * 0.1f;
+
+        if(MagnitudeForward > 0.01f)
+        {
+            int Direction = Magnitude.z > 0 ? 1 : -1;
+            Magnitude.z += Friction.z;
+        }else
+            MagnitudeForward = 0;
+
+        if(MagnitudeStir > 0.01f)
+        {
+            int Direction = Magnitude.z > 0 ? 1 : -1;
+            Magnitude.x += Friction.x * Stirring;
+        }
+
+        CharacterRigidbody.velocity = Magnitude;
+        animator.SetFloat("velocity", MagnitudeForward);
+
+        Vector3 mousePosition = UtilsClass.GetMouseWorldPosition();
+        Vector3 aimDir = (mousePosition - transform.position).normalized;
+        transform.eulerAngles = new Vector3(0, UtilsClass.GetAngleFromVectorFloat(aimDir), 0);
+
 
         //     // rotation.y += Input.GetAxis("Mouse X") * 5f;
         //     // rotation.x += Input.GetAxis("Mouse Y") * 5f;
@@ -72,7 +132,6 @@ public class MovementController : MonoBehaviour
         //     // transform.localRotation = Quaternion.Euler(rotation.x, 0, 0);
         //     // transform.eulerAngles = new Vector2(0, rotation.y);
 
-        // animator.SetFloat("velocity", Mathf.Abs(Direction.magnitude));
         // CharacterRigidbody.AddRelativeForce(Direction);
         //Debug.Log(CharacterRigidbody.velocity);
 
@@ -82,7 +141,7 @@ public class MovementController : MonoBehaviour
     }
 
     void FixedUpdate() {
-        CharacterRigidbody.MovePosition(CharacterRigidbody.position + Magnitude * 10 * Time.fixedDeltaTime);
+        //CharacterRigidbody.MovePosition(CharacterRigidbody.position + Magnitude * 10 * Time.fixedDeltaTime);
         Vector2 lookDir = MousePos - new Vector2(CharacterRigidbody.position.x, CharacterRigidbody.position.z);
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
         CharacterRigidbody.rotation = Quaternion.LookRotation(lookDir);
