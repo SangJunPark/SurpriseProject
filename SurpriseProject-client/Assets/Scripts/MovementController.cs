@@ -13,8 +13,7 @@ public class MovementController : MonoBehaviour
 
     public float Stirring = 1;
     public float Mass = 1;
-    public float Accelation = 1;
-    public float DashAccelation = 1;
+    public float DashAccelation = 0;
 
     public float MaxForwardVelocity = 5f;
     public float MaxStirVelocity = 2f;
@@ -25,11 +24,24 @@ public class MovementController : MonoBehaviour
     Vector3 Direction;
     Animator animator;
     Transform CharacterTR;
+    Transform CharacterRotatorTR;
+
     Rigidbody CharacterRigidbody;
     Vector2 rotation = Vector2.zero;
     Vector2 MousePos;
+    Vector3 PlayerInput;
 
+    [SerializeField, Range(0.1f, 3f)]
+    float MaxSpeed = 5f;
 
+    [SerializeField, Range(1f, 50f)]
+    float MaxDashSpeed = 10f;
+
+    [SerializeField, Range(0.1f, 50f)]
+    float ForwardAccelation = 5f;
+
+    [SerializeField, Range(0.1f, 50f)]
+    float StirAccelation = 5f;
 
     public Camera cam;
     // Start is called before the first frame update
@@ -38,6 +50,7 @@ public class MovementController : MonoBehaviour
         CharacterTR = GetComponent<Transform>();
         animator = GetComponent<Animator>();
         CharacterRigidbody = GetComponent<Rigidbody>();
+        CharacterRotatorTR = transform.Find("Rotator");
     }
 
     // Update is called once per frame
@@ -54,87 +67,83 @@ public class MovementController : MonoBehaviour
 
         //FrameVelocity.Set(0,0,0);
         Magnitude *= 0;
+        PlayerInput *= 0;
 
-        if (Input.GetKey(KeyCode.W))
+        PlayerInput.x = -Input.GetAxis("Horizontal");
+        PlayerInput.z = -Input.GetAxis("Vertical");
+
+        bool isStartDash = false;
+        if (Input.GetKey(KeyCode.LeftShift) && DashAccelation == 0)
         {
-            //Magnitude.z = Mathf.Clamp(Magnitude.z + 0.01f, -0.1f,0.1f);
-            //Magnitude.z = 1;
-            this.ApplyForce(new Vector3(0,0,1));
+            isStartDash = true;
         }
+        if (DashAccelation == 0)
+            PlayerInput = Vector3.ClampMagnitude(PlayerInput, 1f);
 
-        if (Input.GetKey(KeyCode.S))
+
+        /*  이동 타입 1 
+        Vector3 desiredVelocity = new Vector3(PlayerInput.x, 0f, PlayerInput.z) * MaxSpeed;
+        float maxSpeedChange = Accelation * Time.fixedDeltaTime;
+
+        Velocity.x = Mathf.MoveTowards(Velocity.x, desiredVelocity.x, maxSpeedChange);
+        Velocity.z = Mathf.MoveTowards(Velocity.z, desiredVelocity.z, maxSpeedChange);
+
+        ApplyForce(PlayerInput * Time.fixedDeltaTime * 0.1f);
+        Velocity += Magnitude;
+        transform.Translate(Velocity * Time.fixedDeltaTime);
+         */
+
+
+        //if (Input.GetKey(KeyCode.W))
+        //{
+        //    this.ApplyForce(new Vector3(0,0,1));
+        //}
+
+        //if (Input.GetKey(KeyCode.S))
+        //{
+        //    this.ApplyForce(new Vector3(0,0,-1));
+        //}
+
+        //if (Input.GetKey(KeyCode.D))
+        //{
+        //    this.ApplyForce(new Vector3(1,0,0));
+        //}
+
+        //if (Input.GetKey(KeyCode.A))
+        //{
+        //    this.ApplyForce(new Vector3(-1,0,0));
+        //}
+
+        if (isStartDash)
         {
-            //            Magnitude.z = Mathf.Clamp(Magnitude.z - 0.01f, -0.1f, 0.1f);
-            this.ApplyForce(new Vector3(0,0,-1));
+            DashAccelation = MaxDashSpeed;
+            Velocity *= 0;
+            ApplyForce(PlayerInput * MaxDashSpeed);
         }
-
-        if (Input.GetKey(KeyCode.D))
+        else
         {
-            //Magnitude.x = Mathf.Clamp(Magnitude.z + 0.01f, -0.1f,0.1f);
-            // Velocity.x = -1;
-            this.ApplyForce(new Vector3(1,0,0));
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            //Magnitude.x= Mathf.Clamp(Magnitude.z - 0.01f, -0.1f, 0.1f);
-            //Velocity.x = 1;
-            this.ApplyForce(new Vector3(-1,0,0));
-        }
-
-        if (Input.GetKey(KeyCode.LeftShift) && DashAccelation == 1)
-        {
-            //Magnitude.x= Mathf.Clamp(Magnitude.z - 0.01f, -0.1f, 0.1f);
-            DashAccelation = 30;
-        }
-
-
-        // // Magnitude.z = Magnitude.z > 0 ? Magnitude.z - Time.deltaTime*0.4f : Magnitude.z+ Time.deltaTime*0.4f;
-        // // Magnitude.z = Mathf.Abs(Magnitude.z) < 0.0001 ? 0 :  Magnitude.z;
-        // // PhysicalVelocity.z = Mathf.Min(PhysicalVelocity.z + Magnitude.z, 0.1f);
-        // // PhysicalVelocity.z = Mathf.Clamp(PhysicalVelocity.z -= Time.deltaTime, 0f, 0.1f);
-        Vector3 F = Magnitude * Accelation * Mass * Time.fixedDeltaTime;
-
-        if (DashAccelation > 1)
-        {
-            DashAccelation -= (Time.fixedDeltaTime * 60f);
-            DashAccelation = Mathf.Max(1, DashAccelation);
-            F = Magnitude * DashAccelation * Mass * Time.fixedDeltaTime;
-        }
-
-        //가속도
-        // 힘 / 질량 -> 질량이 클수록 가속도는 작다.
-
-        //if (Mathf.Abs(Velocity.z) < 0.04f * MaxForwardVelocity * DashAccelation)
-            Velocity += (F * Time.fixedDeltaTime * 0.1F * 8F);
-
-        //Adjust Friction
-        float VelocityForward = Mathf.Abs(Velocity.z);
-        float VelocityStir = Mathf.Abs(Velocity.x);
-
-
-        // if (VelocityForward > 0f)
-        // {
-        //     float N = 1; //수직 항력 ( m * g)
-        //     float U = 0.01f * GroundFriction; // 마찰 계수
-        //     Vector3 RevVel = -Velocity.normalized;
-        //     Vector3 Friction = RevVel * N * U;
-        //     int Direction = Velocity.z > 0 ? 1 : -1;
-        //     VelocityForward -= Friction.z;
-        //     Velocity.z = Mathf.Max(0, VelocityForward) * Direction;
-        //     Debug.Log(VelocityForward);
-        // }
-        // else
-        //     VelocityForward = 0;
-
-        if (VelocityStir > 0.01f)
-        {
-            int Direction = Velocity.z > 0 ? 1 : -1;
-            //Magnitude.x += Friction.x * Stirring;
+            ApplyForce(PlayerInput);
         }
 
 
-        if (DashAccelation == 1)
+        float N = 1 * Mass * 5f; //수직 항력 ( m * g)
+        float U = 0.01f * GroundFriction; // 마찰 계수
+        Vector3 RevVel = -Velocity.normalized;
+        Vector3 Friction = RevVel * N * U * (DashAccelation > 0 ? 1 : 1);
+        DashAccelation = Mathf.Max(0, DashAccelation - Time.fixedDeltaTime * 100f);
+        Debug.Log(DashAccelation);
+
+        ApplyForce(Friction);
+
+        Magnitude.x *= StirAccelation;
+        Magnitude.z *= ForwardAccelation;
+        Vector3 F = Magnitude * Mass * Time.fixedDeltaTime;
+
+        Velocity += (F * Time.fixedDeltaTime * 0.1F * 8F);
+        Velocity = Vector3.ClampMagnitude(Velocity, 0.1f * MaxSpeed * (DashAccelation > 0 ? MaxDashSpeed* 10 : 1));
+        if (PlayerInput.sqrMagnitude == 0 && Velocity.sqrMagnitude < 0.0001f)
+            Velocity *= 0f;
+
         {
             Vector3 point = new Vector3();
             Event currentEvent = Event.current;
@@ -151,17 +160,20 @@ public class MovementController : MonoBehaviour
 
             Vector3 aimDir = -(new Vector3(mousePos.x - point.x, 0, point.y - mousePos.y)).normalized;
             //Debug.Log(aimDir);
-            Quaternion q = Quaternion.LookRotation(aimDir, Vector3.up);
+            if(Velocity.sqrMagnitude > 0f)
+            {
+                Quaternion q = Quaternion.LookRotation(Velocity.normalized, Vector3.up);
 
-            //q = Quaternion.Lerp(transform.rotation, q, 0.1f);
-            //q.x = 0; q.z = 0;
-            transform.rotation = q;
+                CharacterRotatorTR.rotation = q;
+            }
+            
         }
 
         transform.Translate(Velocity);
-        animator.SetFloat("velocity", Mathf.Lerp(0, 1, VelocityForward / (MaxForwardVelocity * 0.01f)));
-        
-        
+        animator.SetFloat("velocity", Mathf.Lerp(0, 1, Velocity.magnitude / (MaxForwardVelocity * 0.01f)));
+        if(DashAccelation > 0)
+            animator.SetFloat("velocity", 0f);
+
         Accel *= 0;
     }
 
