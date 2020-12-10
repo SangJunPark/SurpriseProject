@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Suproject.Utils;
-
-public class MovementController : MonoBehaviour
+using Mirror;
+public class MovementController : NetworkBehaviour
 {
     [TextArea(1, 1)]
     public string Text;
@@ -47,6 +47,8 @@ public class MovementController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cam = Camera.main;
+        cam.GetComponent<FollowCamera>().Target = transform;
         CharacterTR = GetComponent<Transform>();
         animator = GetComponent<Animator>();
         CharacterRigidbody = GetComponent<Rigidbody>();
@@ -56,10 +58,10 @@ public class MovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!base.hasAuthority) return;
         //Magnitude.Set(0,0,0);
         //Magnitude.x = Input.GetAxisRaw("Horizontal");
         //Magnitude.z = Input.GetAxisRaw("Vertical");
-
         MousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         //Debug.Log(Input.mousePosition);
         //Debug.Log(MousePos);
