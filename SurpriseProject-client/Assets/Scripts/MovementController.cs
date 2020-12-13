@@ -212,9 +212,14 @@ public class MovementController : NetworkBehaviour
         //GUILayout.EndArea();
     }
 
-    void ApplyForce(Vector3 force){
+    public void ApplyForce(Vector3 force){
         Vector3 f = force / this.Mass;
         Magnitude += f;
+    }
+
+    public void ApplyKnockback(Vector3 knockbackMagnitude)
+    {
+        ApplyForce(knockbackMagnitude);
     }
 
     Vector3 CalculateFriction(){

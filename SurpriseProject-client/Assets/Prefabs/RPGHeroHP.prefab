@@ -817,6 +817,7 @@ GameObject:
   - component: {fileID: 4375708199989610664}
   - component: {fileID: 4375708199989610665}
   - component: {fileID: 269064558034384118}
+  - component: {fileID: 6223463188817788778}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -900,6 +901,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5095277, y: 1.8576444, z: 1.0130597}
   m_Center: {x: 0.011003794, y: 0.9281223, z: 0.17888048}
+--- !u!114 &6223463188817788778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4375708199989610667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1b6234e3da0ed54a9c6eb884ed133ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4375708199990483099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1870,6 +1883,7 @@ GameObject:
   - component: {fileID: 4375708201068261170}
   - component: {fileID: 4375708201068261169}
   - component: {fileID: 7496755162485753830}
+  - component: {fileID: 5579616015676973167}
   m_Layer: 0
   m_Name: RPGHeroHP
   m_TagString: Untagged
@@ -2162,6 +2176,18 @@ CapsuleCollider:
   m_Height: 1.94
   m_Direction: 1
   m_Center: {x: 0, y: 0.95, z: 0}
+--- !u!114 &5579616015676973167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4375708201068261178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed0c8c0280b97a4d88f0105d3990116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4375708201139688184
 GameObject:
   m_ObjectHideFlags: 0

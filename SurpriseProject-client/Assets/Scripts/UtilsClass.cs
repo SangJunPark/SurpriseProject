@@ -378,8 +378,58 @@ namespace Suproject.Utils {
             return Quaternion.Euler(0,0,angle) * vec;
         }
 
+        //HOW TO USE
+        //var cube = this.transform.FirstChildOrDefault(x => x.name == "deeply_nested_cube");
+        public static Transform FirstChildOrDefault(this Transform parent, Func<Transform, bool> query)
+        {
+            if (parent.childCount == 0)
+            {
+                return null;
+            }
 
-        
+            Transform result = null;
+            for (int i = 0; i < parent.childCount; i++)
+            {
+                var child = parent.GetChild(i);
+                if (query(child))
+                {
+                    return child;
+                }
+                result = FirstChildOrDefault(child, query);
+            }
+
+            return result;
+        }
+
+
+        public static Transform SearchHierarchyForBone(Transform current, string name)
+        {
+            //sb.Append(current.name + "\n");
+
+            // check if the current bone is the bone we're looking for, if so return it
+            if (current.name == name)
+                return current;
+
+            // search through child bones for the bone we're looking for
+            for (int i = 0; i < current.childCount; ++i)
+            {
+                // the recursive step; repeat the search one step deeper in the hierarchy
+                var child = current.GetChild(i);
+
+                Transform found = SearchHierarchyForBone(child, name);
+
+                // a transform was returned by the search above that is not null,
+                // it must be the bone we're looking for
+                if (found != null)
+                    return found;
+            }
+
+            // bone with name was not found
+            return null;
+        }
+
+
+
         // public static FunctionUpdater CreateMouseDraggingAction(Action<Vector3> onMouseDragging) {
         //     return CreateMouseDraggingAction(0, onMouseDragging);
         // }
@@ -450,7 +500,7 @@ namespace Suproject.Utils {
         //     });
         // }
 
-        
+
 
         // Get UI Position from World Position
         public static Vector2 GetWorldUIPosition(Vector3 worldPosition, Transform parent, Camera uiCamera, Camera worldCamera) {

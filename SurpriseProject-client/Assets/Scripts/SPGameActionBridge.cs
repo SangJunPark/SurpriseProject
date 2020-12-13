@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionDetect : MonoBehaviour
+public class SPGameActionBridge : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,13 +14,5 @@ public class CollisionDetect : MonoBehaviour
     void Update()
     {
         
-    }
-
-    private void OnCollisionEnter(Collision other) {
-        Debug.Log(other);
-    }
-
-    private void OnCollisionExit(Collision other) {
-        Debug.Log(other);
     }
 }
