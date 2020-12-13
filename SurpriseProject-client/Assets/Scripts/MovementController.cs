@@ -8,9 +8,7 @@ public class MovementController : NetworkBehaviour
     [TextArea(1, 1)]
     public string Text;
     public Vector3 Velocity;
-
     public float GroundFriction = 1;
-
     public float Stirring = 1;
     public float Mass = 1;
     public float DashAccelation = 0;
@@ -59,15 +57,9 @@ public class MovementController : NetworkBehaviour
     void Update()
     {
         if (!base.hasAuthority) return;
-        //Magnitude.Set(0,0,0);
-        //Magnitude.x = Input.GetAxisRaw("Horizontal");
-        //Magnitude.z = Input.GetAxisRaw("Vertical");
+
         MousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        //Debug.Log(Input.mousePosition);
-        //Debug.Log(MousePos);
 
-
-        //FrameVelocity.Set(0,0,0);
         Magnitude *= 0;
         PlayerInput *= 0;
 
@@ -84,15 +76,15 @@ public class MovementController : NetworkBehaviour
 
 
         /*  이동 타입 1 
-        Vector3 desiredVelocity = new Vector3(PlayerInput.x, 0f, PlayerInput.z) * MaxSpeed;
-        float maxSpeedChange = Accelation * Time.fixedDeltaTime;
+            Vector3 desiredVelocity = new Vector3(PlayerInput.x, 0f, PlayerInput.z) * MaxSpeed;
+            float maxSpeedChange = Accelation * Time.fixedDeltaTime;
 
-        Velocity.x = Mathf.MoveTowards(Velocity.x, desiredVelocity.x, maxSpeedChange);
-        Velocity.z = Mathf.MoveTowards(Velocity.z, desiredVelocity.z, maxSpeedChange);
+            Velocity.x = Mathf.MoveTowards(Velocity.x, desiredVelocity.x, maxSpeedChange);
+            Velocity.z = Mathf.MoveTowards(Velocity.z, desiredVelocity.z, maxSpeedChange);
 
-        ApplyForce(PlayerInput * Time.fixedDeltaTime * 0.1f);
-        Velocity += Magnitude;
-        transform.Translate(Velocity * Time.fixedDeltaTime);
+            ApplyForce(PlayerInput * Time.fixedDeltaTime * 0.1f);
+            Velocity += Magnitude;
+            transform.Translate(Velocity * Time.fixedDeltaTime);
          */
 
 
@@ -133,7 +125,7 @@ public class MovementController : NetworkBehaviour
         Vector3 RevVel = -Velocity.normalized;
         Vector3 Friction = RevVel * N * U * (DashAccelation > 0 ? 1 : 1);
         DashAccelation = Mathf.Max(0, DashAccelation - Time.fixedDeltaTime * 100f);
-        Debug.Log(DashAccelation);
+        //Debug.Log(DashAccelation);
 
         ApplyForce(Friction);
 
@@ -164,6 +156,7 @@ public class MovementController : NetworkBehaviour
             //Debug.Log(aimDir);
             if(Velocity.sqrMagnitude > 0f)
             {
+                //Debug.Log(Velocity.normalized);
                 Quaternion q = Quaternion.LookRotation(Velocity.normalized, Vector3.up);
 
                 CharacterRotatorTR.rotation = q;
@@ -171,8 +164,10 @@ public class MovementController : NetworkBehaviour
             
         }
 
-        transform.Translate(Velocity);
-        animator.SetFloat("velocity", Mathf.Lerp(0, 1, Velocity.magnitude / (MaxForwardVelocity * 0.01f)));
+        //transform.Translate(Velocity);
+        //CharacterRigidbody.velocity = Velocity * 100;
+        CharacterRigidbody.AddForce(Velocity * 100);
+        animator.SetFloat("velocity", Mathf.Lerp(0, 1, (Velocity.sqrMagnitude * 100) / (MaxForwardVelocity * 0.01f)));
         if(DashAccelation > 0)
             animator.SetFloat("velocity", 0f);
 

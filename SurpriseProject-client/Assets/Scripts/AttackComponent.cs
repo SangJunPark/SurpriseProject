@@ -14,7 +14,7 @@ public class AttackComponent : NetworkBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (!base.hasAuthority) return;
 
@@ -30,6 +30,7 @@ public class AttackComponent : NetworkBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
+            Debug.Log("SpecialAttackAccumTime");
             if(SpecialAttackAccumTime >= SpecialAttackTime)
             {
                 animator.SetTrigger("special_attack");
@@ -38,6 +39,14 @@ public class AttackComponent : NetworkBehaviour
             {
                 animator.SetTrigger("normal_attack");
             }
+            SpecialAttackAccumTime = 0;
         }
+    }
+
+    void DoSpecialAttack(){
+        
+    }
+    void DoNormalAttack(){
+
     }
 }
