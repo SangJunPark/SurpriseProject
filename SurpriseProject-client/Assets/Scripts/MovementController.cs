@@ -46,7 +46,7 @@ public class MovementController : NetworkBehaviour
     void Start()
     {
         cam = Camera.main;
-        cam.GetComponent<FollowCamera>().Target = transform;
+        cam.GetComponent<FollowCamera>().focus = transform;
         CharacterTR = GetComponent<Transform>();
         animator = GetComponent<Animator>();
         CharacterRigidbody = GetComponent<Rigidbody>();
@@ -75,17 +75,18 @@ public class MovementController : NetworkBehaviour
             PlayerInput = Vector3.ClampMagnitude(PlayerInput, 1f);
 
 
-        /*  이동 타입 1 
-            Vector3 desiredVelocity = new Vector3(PlayerInput.x, 0f, PlayerInput.z) * MaxSpeed;
-            float maxSpeedChange = Accelation * Time.fixedDeltaTime;
+        ////이동 타입 1
+        //    Vector3 desiredVelocity = new Vector3(PlayerInput.x, 0f, PlayerInput.z) * MaxSpeed;
+        //float maxSpeedChange = ForwardAccelation * Time.fixedDeltaTime;
 
-            Velocity.x = Mathf.MoveTowards(Velocity.x, desiredVelocity.x, maxSpeedChange);
-            Velocity.z = Mathf.MoveTowards(Velocity.z, desiredVelocity.z, maxSpeedChange);
+        //Velocity.x = Mathf.MoveTowards(Velocity.x, desiredVelocity.x, maxSpeedChange);
+        //Velocity.z = Mathf.MoveTowards(Velocity.z, desiredVelocity.z, maxSpeedChange);
 
-            ApplyForce(PlayerInput * Time.fixedDeltaTime * 0.1f);
-            Velocity += Magnitude;
-            transform.Translate(Velocity * Time.fixedDeltaTime);
-         */
+        //ApplyForce(PlayerInput * Time.fixedDeltaTime * 0.1f);
+        //Velocity += Magnitude;
+        //transform.Translate(Velocity * Time.fixedDeltaTime);
+        //return;
+
 
 
         //if (Input.GetKey(KeyCode.W))
