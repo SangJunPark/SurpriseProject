@@ -5,6 +5,8 @@ using UnityEngine;
 public class SPWeapon : MonoBehaviour
 {
     CollisionSensor hitSensor;
+    [SerializeField] GameObject HitEffectTemplate;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,5 +24,15 @@ public class SPWeapon : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public bool collisionEnabled {
+        set {
+            hitSensor.enabled = value;
+        }
+    }
+
+    public void DoHit(Vector3 hitPosition, Quaternion hitRotation){
+        Instantiate(HitEffectTemplate, hitPosition, Quaternion.identity);
     }
 }

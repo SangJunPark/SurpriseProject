@@ -5,6 +5,8 @@ using UnityEngine;
 public class CollisionSensor : MonoBehaviour
 {
     CollisionHandler handler;
+    Collider sensorCollider;
+
     public CollisionHandler Handler
     {
         set => handler = value;
@@ -12,7 +14,7 @@ public class CollisionSensor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        sensorCollider = GetComponent<Collider>();
     }
 
     // Update is called once per frame
@@ -20,6 +22,9 @@ public class CollisionSensor : MonoBehaviour
     {
         
     }
+    private void OnDisable() => sensorCollider.enabled = false;
+    private void OnEnable() => sensorCollider.enabled = true;
+        
 
     void OnCollisionEnter(Collision collision)
     {
