@@ -11,16 +11,14 @@ namespace FirstGearGames.Mirrors.Assets.FlexNetworkTransforms.Editors
         private SerializedProperty _useLocalSpace;
 
         private SerializedProperty _intervalType;
-        private SerializedProperty _favorPerformance;
         private SerializedProperty _synchronizeInterval;
 
         private SerializedProperty _reliable;
-        private SerializedProperty _resendUnreliable;
         private SerializedProperty _preciseSynchronization;
-
+        
         private SerializedProperty _interpolationFallbehind;
         private SerializedProperty _extrapolationSpan;
-
+        
         private SerializedProperty _teleportThreshold;
 
         private SerializedProperty _clientAuthoritative;
@@ -41,11 +39,9 @@ namespace FirstGearGames.Mirrors.Assets.FlexNetworkTransforms.Editors
             _useLocalSpace = serializedObject.FindProperty("_useLocalSpace");
 
             _intervalType = serializedObject.FindProperty("_intervalType");
-            _favorPerformance = serializedObject.FindProperty("_favorPerformance");
             _synchronizeInterval = serializedObject.FindProperty("_synchronizeInterval");
 
             _reliable = serializedObject.FindProperty("_reliable");
-            _resendUnreliable = serializedObject.FindProperty("_resendUnreliable");
             _preciseSynchronization = serializedObject.FindProperty("_preciseSynchronization");
 
             _interpolationFallbehind = serializedObject.FindProperty("_interpolationFallbehind");
@@ -100,7 +96,6 @@ namespace FirstGearGames.Mirrors.Assets.FlexNetworkTransforms.Editors
             if (_intervalType.intValue == 0)
             {
                 EditorGUI.indentLevel++;
-                EditorGUILayout.PropertyField(_favorPerformance, new GUIContent("Favor Performance", "True to favor performance over update frequency. This is ideal when transform updates can be delayed very slightly."));
                 EditorGUILayout.PropertyField(_synchronizeInterval, new GUIContent("Synchronize Interval", "How often to synchronize this transform."));
                 EditorGUI.indentLevel--;
             }
@@ -113,12 +108,6 @@ namespace FirstGearGames.Mirrors.Assets.FlexNetworkTransforms.Editors
             EditorGUI.indentLevel++;
 
             EditorGUILayout.PropertyField(_reliable, new GUIContent("Reliable", "True to synchronize using the reliable channel. False to synchronize using the unreliable channel. Your project must use 0 as reliable, and 1 as unreliable for this to function properly. This feature is not supported on TCP transports."));
-            if (_reliable.boolValue == false)
-            {
-                EditorGUI.indentLevel++;
-                EditorGUILayout.PropertyField(_resendUnreliable, new GUIContent("Resend Unreliable", "True to synchronize using the reliable channel. False to synchronize using the unreliable channel. Your project must use 0 as reliable, and 1 as unreliable for this to function properly. This feature is not supported on TCP transports."));
-                EditorGUI.indentLevel--;
-            }
             EditorGUILayout.PropertyField(_preciseSynchronization, new GUIContent("Precise Synchronization", "True to synchronize data anytime it has changed. False to allow greater differences before synchronizing."));
 
             EditorGUILayout.PropertyField(_interpolationFallbehind, new GUIContent("Interpolation Fallbehind", "How far in the past objects should be for interpolation. Higher values will result in smoother movement with network fluctuations but lower values will result in objects being closer to their actual position. Lower values can generally be used for longer synchronization intervalls."));

@@ -11,15 +11,19 @@ namespace FirstGearGames.Utilities.Maths
         /// </summary>
         /// <param name="r"></param>
         /// <param name="target"></param>
-        /// <param name="tolerance"></param>
+        /// <param name="distance"></param>
         /// <returns></returns>
-        public static bool Near(this Quaternion r, Quaternion target, float tolerance = 1f)
+        public static bool Matches(this Quaternion r, Quaternion target, float? distance = null)
         {
-            if (tolerance == 0f)
-                tolerance = 0.01f;
-
-            float a = Vectors.FastSqrMagnitude(r.eulerAngles - target.eulerAngles);
-            return (a <= (tolerance * tolerance));
+            if (distance == null)
+            {
+                return (r.w == target.w && r.x == target.x && r.y == target.y && r.z == target.z);
+            }
+            else
+            {
+                float a = Vector3.SqrMagnitude(r.eulerAngles - target.eulerAngles);
+                return (a <= (distance * distance));
+            }
         }
     }
 

@@ -130,12 +130,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  _useLocalSpace: 0
-  _intervalType: 0
-  _favorPerformance: 1
+  _useLocalSpace: 1
+  _intervalType: 1
   _synchronizeInterval: 0.1
-  _reliable: 0
-  _resendUnreliable: 0
+  _reliable: 1
   _preciseSynchronization: 0
   _interpolationFallbehind: 0.06
   _extrapolationSpan: 0
@@ -144,7 +142,7 @@ MonoBehaviour:
   _synchronizeToOwner: 1
   _synchronizePosition: 0
   _snapPosition: 0
-  _synchronizeRotation: 0
+  _synchronizeRotation: 1
   _snapRotation: 2
   _synchronizeScale: 1
   _snapScale: 0

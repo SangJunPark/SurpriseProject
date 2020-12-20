@@ -64,10 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  PlatformLayer:
-    serializedVersion: 2
-    m_Bits: 16
-  MoveRate: 5
+  MoveRate: 3
 --- !u!114 &3331250267447188313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,13 +81,11 @@ MonoBehaviour:
   syncInterval: 0.1
   _useLocalSpace: 0
   _intervalType: 1
-  _favorPerformance: 1
-  _synchronizeInterval: 0.1
+  _synchronizeInterval: 0.25
   _reliable: 0
-  _resendUnreliable: 1
   _preciseSynchronization: 1
   _interpolationFallbehind: 0.06
-  _extrapolationSpan: 0.1
+  _extrapolationSpan: 0
   _teleportThreshold: 0
   _clientAuthoritative: 1
   _synchronizeToOwner: 1
@@ -98,7 +93,7 @@ MonoBehaviour:
   _snapPosition: 0
   _synchronizeRotation: 0
   _snapRotation: 0
-  _synchronizeScale: 0
+  _synchronizeScale: 1
   _snapScale: 0
 --- !u!1 &8760456343354617256
 GameObject:

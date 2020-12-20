@@ -45,6 +45,7 @@ public class MovementController : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!base.hasAuthority) return;
         cam = Camera.main;
         cam.GetComponent<FollowCamera>().focus = transform;
         CharacterTR = GetComponent<Transform>();
@@ -177,6 +178,8 @@ public class MovementController : NetworkBehaviour
 
     void FixedUpdate()
     {
+        if (!base.hasAuthority) return;
+
         //CharacterRigidbody.MovePosition(CharacterRigidbody.position + Magnitude * 10 * Time.fixedDeltaTime);
         //Vector2 lookDir = MousePos - new Vector2(CharacterRigidbody.position.x, CharacterRigidbody.position.z);
         //float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
@@ -185,6 +188,7 @@ public class MovementController : NetworkBehaviour
 
     public static Vector3 GetMouseWorldPosition()
     {
+
         Vector3 vec = GetMouseWorldPositionWithZ(Input.mousePosition, Camera.main);
         vec.z = 0f;
         return vec;
@@ -214,12 +218,16 @@ public class MovementController : NetworkBehaviour
     }
 
     public void ApplyForce(Vector3 force){
+        if (!base.hasAuthority) return;
+
         Vector3 f = force / this.Mass;
         Magnitude += f;
     }
 
     public void ApplyKnockback(Vector3 knockbackMagnitude)
     {
+        if (!base.hasAuthority) return;
+
         ApplyForce(knockbackMagnitude);
     }
 

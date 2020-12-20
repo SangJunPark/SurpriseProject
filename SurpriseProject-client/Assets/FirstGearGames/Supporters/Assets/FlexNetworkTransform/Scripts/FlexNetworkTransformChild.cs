@@ -1,5 +1,4 @@
-﻿using FirstGearGames.Utilities.Networks;
-using FirstGearGames.Utilities.Objects;
+﻿using FirstGearGames.Utilities.Objects;
 using Mirror;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -20,7 +19,7 @@ namespace FirstGearGames.Mirrors.Assets.FlexNetworkTransforms
         /// </summary>
         [FormerlySerializedAs("Target")]
         [SerializeField]
-        private Transform _target;
+        private Transform _target = null;
         #endregion
 
         #region Public.
@@ -35,7 +34,7 @@ namespace FirstGearGames.Mirrors.Assets.FlexNetworkTransforms
             if (initialState)
             {
                 writer.WriteVector3(TargetTransform.GetPosition(base.UseLocalSpace));
-                writer.WriteUInt32(Quaternions.CompressQuaternion(TargetTransform.GetRotation(base.UseLocalSpace)));
+                FlexNetworkTransformSerializers.WriteCompressedQuaternion(writer, TargetTransform.GetRotation(base.UseLocalSpace));
                 writer.WriteVector3(TargetTransform.GetScale());
             }
             return base.OnSerialize(writer, initialState);
@@ -45,7 +44,7 @@ namespace FirstGearGames.Mirrors.Assets.FlexNetworkTransforms
             if (initialState)
             {
                 TargetTransform.SetPosition(base.UseLocalSpace, reader.ReadVector3());
-                TargetTransform.SetRotation(base.UseLocalSpace, Quaternions.DecompressQuaternion(reader.ReadUInt32()));
+                TargetTransform.SetRotation(base.UseLocalSpace, FlexNetworkTransformSerializers.ReadCompressedQuaternion(reader));
                 TargetTransform.SetScale(reader.ReadVector3());
             }
             base.OnDeserialize(reader, initialState);

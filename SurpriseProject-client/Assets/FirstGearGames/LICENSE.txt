@@ -1,4 +1,4 @@
-"CONTENT" is all files within this package under the FirstGearGames folder, including but not limited to: source code, images, audio. CONTENT is proprietary and confidential.
+"CONTENT" is all files within the FirstGearGames folder of this package including but not limited to: source code, images, audio. CONTENT is proprietary and confidential.
 "CREATOR" is FirstGearGames.
 "OWNER" is any individual which has acquired CONTENT through CREATOR or medium of CREATOR.
 

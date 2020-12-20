@@ -384,10 +384,11 @@ namespace FirstGearGames.Mirrors.Assets.ReactivePhyics
         /// <returns></returns>
         private bool RotationMatches(SyncData data, bool precise)
         {
-            if (precise)
-                return transform.GetRotation(_useLocalSpace).Near(data.Rotation);
-            else
-                return transform.GetRotation(_useLocalSpace).Near(data.Rotation, 1f);
+            return true;
+            //if (precise)
+            //    return transform.GetRotation(_useLocalSpace).Near(data.Rotation);
+            //else
+            //    return transform.GetRotation(_useLocalSpace).Near(data.Rotation, 1f);
         }
 
         private bool VelocityMatches(SyncData data, bool precise)

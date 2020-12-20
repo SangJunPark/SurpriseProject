@@ -1,15 +1,3 @@
-2020/12/05
-	- FlexNetworkTransform
-		+ Fixed data sending excessively due to failed transform changes.
-		+ Unreliable sends can now optionally resend data. True to resend transform data with every unreliable packet. At the cost of bandwidth this will ensure smoother movement on very unstable connections but generally is not needed.
-		+ Added Favor Performance option while using timed intervals. While true FlexNetworkTransform will favor performance over update frequency. This is ideal when transform updates can be delayed very slightly.
-		+ More bandwidth saved by limiting who can receive remote actions.
-
-2020/12/01
-	- FlexNetworkTransform
-		+ Platform support improved; transforms previously struggled to stay synchronized with rotating platforms, or very long platforms. Transforms now stay in perfect synchronization under all conditions.
-		+ More rotation compression; reduced rotation sends by 2 bytes.
-
 2020/11/18
 	- FlexNetworkTransform
 		+ Added the ability to synchronize to networked platforms using FlexNetworkTransform.SetPlatform(platformNetworkIdentity). View FlexNetworkTransform README for more information.

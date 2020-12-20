@@ -133,7 +133,7 @@ namespace FirstGearGames.Mirrors.Assets.FlexNetworkTransforms
                 writer.WriteVector3(syncData.Position);
             //Rotation.
             if (EnumContains.SyncPropertiesContains(sp, SyncProperties.Rotation))
-                writer.WriteUInt32(Quaternions.CompressQuaternion(syncData.Rotation));
+                WriteCompressedQuaternion(writer, syncData.Rotation);
             //Scale.
             if (EnumContains.SyncPropertiesContains(sp, SyncProperties.Scale))
                 writer.WriteVector3(syncData.Scale);
@@ -162,7 +162,7 @@ namespace FirstGearGames.Mirrors.Assets.FlexNetworkTransforms
                 syncData.Position = reader.ReadVector3();
             //Rotation.
             if (EnumContains.SyncPropertiesContains(sp, SyncProperties.Rotation))
-                syncData.Rotation = Quaternions.DecompressQuaternion(reader.ReadUInt32());
+                syncData.Rotation = ReadCompressedQuaternion(reader);
             //scale.
             if (EnumContains.SyncPropertiesContains(sp, SyncProperties.Scale))
                 syncData.Scale = reader.ReadVector3();
@@ -173,6 +173,42 @@ namespace FirstGearGames.Mirrors.Assets.FlexNetworkTransforms
             return syncData;
         }
 
+        /// <summary>
+        /// Reads a compressed quaternion from a reader.
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
+        public static Quaternion ReadCompressedQuaternion(NetworkReader reader)
+        {
+            byte largest = reader.ReadByte();
+            short a = 0, b = 0, c = 0;
+            if (!Quaternions.UseLargestOnly(largest))
+            {
+                a = reader.ReadInt16();
+                b = reader.ReadInt16();
+                c = reader.ReadInt16();
+            }
+            return Quaternions.DecompressQuaternion(largest, a, b, c);
+        }
+
+        /// <summary>
+        /// Writes a compressed quaternion to a writer.
+        /// </summary>
+        /// <param name="writer"></param>
+        /// <param name="rotation"></param>
+        public static void WriteCompressedQuaternion(NetworkWriter writer, Quaternion rotation)
+        {
+            byte largest;
+            short a, b, c;
+            Quaternions.CompressQuaternion(rotation, out largest, out a, out b, out c);
+            writer.WriteByte(largest);
+            if (!Quaternions.UseLargestOnly(largest))
+            {
+                writer.WriteInt16(a);
+                writer.WriteInt16(b);
+                writer.WriteInt16(c);
+            }
+        }
     }
 
 

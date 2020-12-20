@@ -6,27 +6,22 @@ namespace FirstGearGames.Mirrors.Assets.FlexNetworkTransforms.Demos
 
     public class Motor3D : NetworkBehaviour
     {
-        public LayerMask PlatformLayer;
         public float MoveRate = 3f;
 
         private FlexNetworkTransform _fnt;
 
         private NetworkIdentity _localPlatform;
-        private Transform _platformTarget;
-        private bool _usePlatforms = true;
+        private Vector3? _lastPlatformPosition = null;
+
+        private void Awake()
+        {
+            _fnt = GetComponent<FlexNetworkTransform>();
+        }
 
         public override void OnStartAuthority()
         {
             base.OnStartAuthority();
-            _fnt = GetComponent<FlexNetworkTransform>();
-            _platformTarget = new GameObject().transform;
-            _platformTarget.gameObject.name = "Motor3D Target";
-        }
 
-        private void OnDestroy()
-        {
-            if (_platformTarget != null)
-                Destroy(_platformTarget.gameObject);
         }
 
         // Update is called once per frame
@@ -35,56 +30,54 @@ namespace FirstGearGames.Mirrors.Assets.FlexNetworkTransforms.Demos
             if (!base.hasAuthority)
                 return;
 
-            if (Input.GetKeyDown(KeyCode.P))
-                _usePlatforms = true;
-            else if (Input.GetKeyDown(KeyCode.O))
-                _usePlatforms = false;
-
             /* Local movement, nothing special. */
             float horizontal = Input.GetAxis("Horizontal");
             float forward = Input.GetAxis("Vertical");
             Vector3 nextPos = new Vector3(horizontal, 0f, forward) * MoveRate * Time.deltaTime;
+            transform.position += nextPos;
 
-            //No platform, move normally.
-            if (_platformTarget.parent == null)
+            /* Move with platform locally. 
+             * This is so the object doesn't slide locally
+             * for the owning player. */
+            if (_localPlatform != null)
             {
-                transform.position += nextPos;
-            }
-            else
-            {
-                nextPos.x *= _platformTarget.localScale.x;
-                nextPos.y *= _platformTarget.localScale.y;
-                nextPos.z *= _platformTarget.localScale.z;
-                _platformTarget.localPosition += nextPos;
-                transform.position = _platformTarget.position;
-                transform.rotation = _platformTarget.rotation;
+                transform.rotation = _localPlatform.transform.rotation;
+
+                if (_lastPlatformPosition != null)
+                {
+                    Vector3 diff = (_localPlatform.transform.position - _lastPlatformPosition.Value);
+                    diff.y = 0;
+                    transform.position += diff;
+                }
+
+                _lastPlatformPosition = _localPlatform.transform.position;
             }
 
-
+            /* Snap to the platform. This is just to keep the owner on
+             * the platform locally. */
+            Ray ray = new Ray(transform.position + new Vector3(0f, 1f, 0f), -transform.up);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+                transform.position = new Vector3(transform.position.x, hit.collider.transform.position.y + 0.5f, transform.position.z);
+            
             /* Check to set the platform.
              * Here is where if a platform is hit
              * the value is set to FlexNetworkTransform. 
              * Also notice that when the platform is not hit,
              * I am setting null. */
-            Ray ray = new Ray(transform.position + new Vector3(0f, 1f, 0f), -transform.up);
-            RaycastHit hit;
+            ray = new Ray(transform.position + new Vector3(0f, 1f, 0f), -transform.up);
             //If hit.
-            if (_usePlatforms && Physics.Raycast(ray, out hit, 15f, PlatformLayer))
+            if (Physics.Raycast(ray, out hit, 2f))
             {
                 _localPlatform = hit.collider.gameObject.GetComponent<NetworkIdentity>();
                 _fnt.SetPlatform(_localPlatform);
-                if (_platformTarget.parent == null)
-                {
-                    _platformTarget.transform.position = hit.point;
-                    _platformTarget.SetParent(_localPlatform.transform);
-                    _platformTarget.localRotation = Quaternion.identity;
-                }
             }
             //No hit.
             else
             {
                 _localPlatform = null;
                 _fnt.SetPlatform(null);
+                _lastPlatformPosition = null;
             }
         }
 
