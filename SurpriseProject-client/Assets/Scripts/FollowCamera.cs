@@ -73,15 +73,15 @@ public class FollowCamera : MonoBehaviour
     {
         UpdateFocusPoint();
         Quaternion lookRotation = lookRotation = Quaternion.Euler(orbitAngles);
-        //if (ManualRotation() || AutomaticRotation())
-        //{
+        // if (ManualRotation() || AutomaticRotation())
+        // {
         //    ConstrainAngles();
         //    lookRotation = Quaternion.Euler(orbitAngles);
-        //}
-        //else
-        //{
+        // }
+        // else
+        // {
         //    lookRotation = transform.localRotation;
-        //}
+        // }
 
         Vector3 lookDirection = lookRotation * Vector3.forward;
         Vector3 lookPosition = focusPoint - lookDirection * distance;

@@ -75,41 +75,6 @@ public class MovementController : NetworkBehaviour
         if (DashAccelation == 0)
             PlayerInput = Vector3.ClampMagnitude(PlayerInput, 1f);
 
-
-        ////이동 타입 1
-        //    Vector3 desiredVelocity = new Vector3(PlayerInput.x, 0f, PlayerInput.z) * MaxSpeed;
-        //float maxSpeedChange = ForwardAccelation * Time.fixedDeltaTime;
-
-        //Velocity.x = Mathf.MoveTowards(Velocity.x, desiredVelocity.x, maxSpeedChange);
-        //Velocity.z = Mathf.MoveTowards(Velocity.z, desiredVelocity.z, maxSpeedChange);
-
-        //ApplyForce(PlayerInput * Time.fixedDeltaTime * 0.1f);
-        //Velocity += Magnitude;
-        //transform.Translate(Velocity * Time.fixedDeltaTime);
-        //return;
-
-
-
-        //if (Input.GetKey(KeyCode.W))
-        //{
-        //    this.ApplyForce(new Vector3(0,0,1));
-        //}
-
-        //if (Input.GetKey(KeyCode.S))
-        //{
-        //    this.ApplyForce(new Vector3(0,0,-1));
-        //}
-
-        //if (Input.GetKey(KeyCode.D))
-        //{
-        //    this.ApplyForce(new Vector3(1,0,0));
-        //}
-
-        //if (Input.GetKey(KeyCode.A))
-        //{
-        //    this.ApplyForce(new Vector3(-1,0,0));
-        //}
-
         if (isStartDash)
         {
             DashAccelation = MaxDashSpeed;
@@ -127,7 +92,6 @@ public class MovementController : NetworkBehaviour
         Vector3 RevVel = -Velocity.normalized;
         Vector3 Friction = RevVel * N * U * (DashAccelation > 0 ? 1 : 1);
         DashAccelation = Mathf.Max(0, DashAccelation - Time.fixedDeltaTime * 100f);
-        //Debug.Log(DashAccelation);
 
         ApplyForce(Friction);
 
@@ -145,8 +109,6 @@ public class MovementController : NetworkBehaviour
             Event currentEvent = Event.current;
             Vector2 mousePos = new Vector2();
 
-            // Get the mouse position from Event.
-            // Note that the y position from Event is inverted.
 
             mousePos.x = Input.mousePosition.x;
             mousePos.y = cam.pixelHeight - Input.mousePosition.y;
@@ -155,7 +117,6 @@ public class MovementController : NetworkBehaviour
             point = cam.WorldToScreenPoint(transform.position);
 
             Vector3 aimDir = -(new Vector3(mousePos.x - point.x, 0, point.y - mousePos.y)).normalized;
-            //Debug.Log(aimDir);
             if(Velocity.sqrMagnitude > 0f)
             {
                 //Debug.Log(Velocity.normalized);
@@ -166,8 +127,6 @@ public class MovementController : NetworkBehaviour
             
         }
 
-        //transform.Translate(Velocity);
-        //CharacterRigidbody.velocity = Velocity * 100;
         CharacterRigidbody.AddForce(Velocity * 100);
         animator.SetFloat("velocity", Mathf.Lerp(0, 1, (Velocity.sqrMagnitude * 100) / (MaxForwardVelocity * 0.01f)));
         if(DashAccelation > 0)

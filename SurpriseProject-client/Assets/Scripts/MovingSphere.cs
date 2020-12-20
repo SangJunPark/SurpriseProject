@@ -93,6 +93,8 @@ public class MovingSphere : MonoBehaviour {
 		}
 
 		body.velocity = velocity;
+		Quaternion q = Quaternion.LookRotation(velocity.normalized, Vector3.up);
+                body.transform.rotation = q;
 		ClearState();
 	}
 

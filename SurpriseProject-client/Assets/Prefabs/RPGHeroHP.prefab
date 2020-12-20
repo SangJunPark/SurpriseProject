@@ -739,7 +739,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a87def7cf3654cc43add52e645fee2ce, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -817,6 +817,7 @@ GameObject:
   - component: {fileID: 4375708199989610664}
   - component: {fileID: 4375708199989610665}
   - component: {fileID: 269064558034384118}
+  - component: {fileID: 6796558254008431938}
   - component: {fileID: 6223463188817788778}
   m_Layer: 0
   m_Name: Sword
@@ -901,6 +902,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5095277, y: 1.8576444, z: 1.0130597}
   m_Center: {x: 0.011003794, y: 0.9281223, z: 0.17888048}
+--- !u!114 &6796558254008431938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4375708199989610667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c17251ff4b4b7b0459c8225531a22a03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HitEffectTemplate: {fileID: 1337198075554910, guid: 25c7aa9ad705fe143a4d71c1c8deb7d4,
+    type: 3}
 --- !u!114 &6223463188817788778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2057,14 +2072,14 @@ MonoBehaviour:
   Velocity: {x: 0, y: 0, z: 0}
   GroundFriction: 3
   Stirring: 0
-  Mass: 1
+  Mass: 2
   DashAccelation: 0
   MaxForwardVelocity: 2
   MaxStirVelocity: 2
-  MaxSpeed: 0.7
-  MaxDashSpeed: 29.4
-  ForwardAccelation: 44.7
-  StirAccelation: 49.1
+  MaxSpeed: 0.65
+  MaxDashSpeed: 15.3
+  ForwardAccelation: 28.4
+  StirAccelation: 20.2
   cam: {fileID: 0}
 --- !u!114 &4375708201068261180
 MonoBehaviour:
