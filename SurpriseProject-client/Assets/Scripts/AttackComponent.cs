@@ -39,7 +39,7 @@ public class AttackComponent : NetworkBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            if(SpecialAttackAccumTime < 0.3f){
+            if(SpecialAttackAccumTime < SpecialAttackTime){
                 DoNormalAttack();
             }else if(SpecialAttackAccumTime >= SpecialAttackTime){
                 DoSpecialAttack();
@@ -64,12 +64,12 @@ public class AttackComponent : NetworkBehaviour
     }
 
     void OnAttackStart(){
-        Debug.Log("ATTACK START");
+        //Debug.Log("ATTACK START");
         AnyWeapon.collisionEnabled = true;
     }
 
     void OnAttackEnd(){
-        Debug.Log("ATTACK END");
+        //Debug.Log("ATTACK END");
         AnyWeapon.collisionEnabled = false;
     }
 

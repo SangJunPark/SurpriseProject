@@ -11,10 +11,14 @@ public class CollisionSensor : MonoBehaviour
     {
         set => handler = value;
     }
+
+    void Awake(){
+        sensorCollider = GetComponent<Collider>();
+    }
     // Start is called before the first frame update
     void Start()
     {
-        sensorCollider = GetComponent<Collider>();
+        //sensorCollider = GetComponent<Collider>();
     }
 
     // Update is called once per frame
