@@ -6,6 +6,7 @@ public class HPComponent : MonoBehaviour
 {
     float MaxHP;
     float CurrentHP;
+    
 
     // Start is called before the first frame update
     void Start()
