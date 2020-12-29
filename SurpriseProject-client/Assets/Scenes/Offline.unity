@@ -132,8 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 146062341}
-  - component: {fileID: 146062343}
   - component: {fileID: 146062342}
+  - component: {fileID: 146062343}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 146062340}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8aab4c8111b7c411b9b92cf3dbc5bd4e, type: 3}
+  m_Script: {fileID: 11500000, guid: 321d66456039d7b439791cdb0de1d15a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
@@ -219,18 +219,20 @@ MonoBehaviour:
   offlineScene: Assets/Scenes/Offline.unity
   onlineScene: Assets/Scenes/Lobby.unity
   transport: {fileID: 146062342}
-  networkAddress: 174.138.17.62
+  networkAddress: localhost
   maxConnections: 4
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 6783586594219883278, guid: 6415f0fb7abd0b04085320f45e45ae2a,
+  playerPrefab: {fileID: 2133226291869710276, guid: 4bea5a2ee3acc0f45830b5d4fdd57851,
     type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs:
-  - {fileID: 1872051118742475165, guid: b9777508a0600c54e9e2aa2401148e99, type: 3}
-  - {fileID: 4375708201068261178, guid: c43beed6897521149859a502e0db7ce3, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerSpawnSystem: {fileID: 8976475925867498369, guid: 40297a318658bc2448170dda5c864e71,
+    type: 3}
 --- !u!1 &275734164
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,7 +884,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1612912179}
   - component: {fileID: 1612912178}
-  - component: {fileID: 1612912177}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -890,14 +891,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1612912177
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1612912176}
-  m_Enabled: 1
 --- !u!20 &1612912178
 Camera:
   m_ObjectHideFlags: 0
@@ -1059,8 +1052,8 @@ GameObject:
   - component: {fileID: 1982638446}
   - component: {fileID: 1982638445}
   - component: {fileID: 1982638444}
-  - component: {fileID: 1982638448}
   - component: {fileID: 1982638449}
+  - component: {fileID: 1982638448}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1160,7 +1153,7 @@ Animator:
   m_GameObject: {fileID: 1982638443}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7fc9c7baaeb0de043b706efdec2694af, type: 2}
+  m_Controller: {fileID: 9100000, guid: a8cdc5c08b5b8cb49991461d0b419c20, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1177,7 +1170,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1982638443}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
+  m_Alpha: 0
+  m_Interactable: 0
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0

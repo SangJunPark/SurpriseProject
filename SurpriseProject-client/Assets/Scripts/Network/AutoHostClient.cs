@@ -4,7 +4,6 @@ using UnityEngine;
 using Mirror;
 namespace MirrorBasics
 {
-
     public class AutoHostClient : MonoBehaviour
     {
         [SerializeField] NetworkManager networkManager;

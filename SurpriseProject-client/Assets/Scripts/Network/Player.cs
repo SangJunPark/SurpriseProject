@@ -11,8 +11,7 @@ namespace MirrorBasics
         public static Player localPlayer;
         [SyncVar] public string matchID;
         [SyncVar] public int playerIndex;
-        [SerializeField] GameObject actualChar;
-
+        [SerializeField] GameObject playerSpawnSystem;
         NetworkMatchChecker networkMatchChecker;
         void Start()
         {
@@ -21,14 +20,15 @@ namespace MirrorBasics
             if (isLocalPlayer)
             {
                 localPlayer = this;
-            } else
+            }
+            else
             {
                 UILobby.instance.SpawnPlayerUIPrefab(this);
             }
         }
 
 
-       /// ////////////////////////////////// HOST GAME //////////////////////////////////////////////////////////
+        /// ////////////////////////////////// HOST GAME //////////////////////////////////////////////////////////
         public void HostGame()
         {
             string matchID = MatchMaker.GetNewMatchID();
@@ -44,7 +44,8 @@ namespace MirrorBasics
                 Debug.Log("<color=green>Game Host Success</color>");
                 networkMatchChecker.matchId = _matchID.ToGuid();
                 TargetHostGame(true, _matchID, playerIndex);
-            } else
+            }
+            else
             {
                 Debug.Log("<color=red>Game Host fail</color>");
                 TargetHostGame(false, _matchID, playerIndex);
@@ -114,9 +115,26 @@ namespace MirrorBasics
         {
             Debug.Log($"Game {matchID} Starting!");
             //load game scene?
-            SceneManager.LoadScene(2, LoadSceneMode.Additive);
+            StartCoroutine(StartGameScene(2));
+        }
+
+        IEnumerator StartGameScene(int sceneID)
+        {
+            Debug.Log($"Start load scene {sceneID}");
+
+            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneID, LoadSceneMode.Additive);
+
+
+            while (!asyncOperation.isDone)
+            {
+                yield return null;
+            }
+
             UILobby.instance.HideUILobby();
-            GameObject myChar = Instantiate(actualChar, transform);
+
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("ingame_prototype"));
+            GameObject playerSpawnSystemInstance = Instantiate(playerSpawnSystem);
+            NetworkServer.Spawn(playerSpawnSystemInstance);
         }
     }
 }
