@@ -6,6 +6,10 @@ using MoreMountains.TopDownEngine;
 public class SPCharacterMovement : CharacterMovement
 {
     Vector3 Magnitude = Vector3.zero;
+    Vector3 _frameVelocity = Vector3.zero;
+
+    [Header("Friction")]
+    public float FrictionConstant = 1f;
 
     public float Mass = 1f;
 
@@ -19,6 +23,7 @@ public class SPCharacterMovement : CharacterMovement
     {
         //_movementVector = Vector3.zero;
         _currentInput = Vector2.zero;
+        _frameVelocity = Vector3.zero;
 
         _currentInput.x = _horizontalMovement;
         _currentInput.y = _verticalMovement;
@@ -43,12 +48,18 @@ public class SPCharacterMovement : CharacterMovement
             }
         }
 
-        //_movementVector.x += _lerpedInput.x;
-        //_movementVector.y = 0f;
-        //_movementVector.z += _lerpedInput.y;
+        
+            _acceleration = CalculateAccelation();
+            float deceleration = CalculateDeceleration();
 
-        ApplyAccelation();
-        //ApplyDeccelation();
+            Vector3 _friction = CalculateFriction();
+
+            _frameVelocity.Set(_normalizedInput.x, 0, _normalizedInput.y);
+            _frameVelocity *= (_acceleration) * Time.fixedDeltaTime;
+
+            ApplyForce(_frameVelocity);
+            ApplyForce(_friction);
+        
 
         _movementVector = Magnitude;
 
@@ -63,53 +74,52 @@ public class SPCharacterMovement : CharacterMovement
 
         _movementVector *= _movementSpeed;
 
-
-
-        //if (_movementVector.magnitude > MovementSpeed)
-        //{
-        //    _movementVector = Vector3.ClampMagnitude(_movementVector, MovementSpeed);
-        //}
+        if (_movementVector.magnitude > MovementSpeed)
+        {
+            _movementVector = Vector3.ClampMagnitude(_movementVector, MovementSpeed);
+        }
 
         if ((_currentInput.magnitude <= IdleThreshold) && (_controller.CurrentMovement.magnitude < IdleThreshold))
         {
             _movementVector = Vector3.zero;
         }
-
-        Debug.Log("accelation : " + _acceleration + " movementVec : " + _movementVector);
-        Debug.Log("_currentInput : " + _currentInput + " _normalizedInput : " + _normalizedInput + " _lerperdInput : " + _lerpedInput);
-
-        //Debug.Log(_movementVector);
+        Debug.Log("Magnitude : " + Magnitude + " friction : " + _friction + " movevec : " + _movementVector);
         _controller.SetMovement(_movementVector);
     }
 
-    void ApplyFriction()
-    {
-
-    }
-
-    void ApplyAccelation()
-    {
-        ApplyForce(new Vector3(_normalizedInput.x, 0, _normalizedInput.y) * Acceleration * Time.fixedDeltaTime * 0.1F);
-    }
-
-    void ApplyDeccelation()
+    Vector3 CalculateFriction()
     {
         float GroundFriction = 1;
 
-        float N = 1 * Mass * 1f; //수직 항력 ( m * g)
+        float N = FrictionConstant * Mass * 1f; //수직 항력 ( m * g)
         float U = 0.01f * GroundFriction; // 마찰 계수
         Vector3 RevVel = -_movementVector.normalized;
         Vector3 Friction = RevVel * N * U * 1;
+        return Friction;
+    }
 
-        ApplyForce(Friction);
+    float CalculateAccelation()
+    {
+        if(_normalizedInput.sqrMagnitude > 0)
+        {
+            return Mathf.Lerp(0, Acceleration, Acceleration * Time.deltaTime);
+        }
+        return 0;
+    }
+
+    float CalculateDeceleration()
+    {
+        if (_normalizedInput.sqrMagnitude == 0)
+        {
+            return Mathf.Lerp(_acceleration, 0, Deceleration * Time.deltaTime);
+        }
+        return 0;
     }
 
     void ApplyForce(Vector3 force)
     {
-        //if (!base.hasAuthority) return;
-
         Vector3 f = force / Mass;
         Magnitude += f;
-        Magnitude = Vector3.ClampMagnitude(Magnitude, 6);
+        Magnitude = Vector3.ClampMagnitude(Magnitude, 2);
     }
 }
