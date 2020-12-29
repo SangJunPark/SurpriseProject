@@ -42,22 +42,27 @@ public class MovementController : NetworkBehaviour
     float StirAccelation = 5f;
 
     public Camera cam;
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
-        if (!base.hasAuthority) return;
+        //if (!base.hasAuthority) return;
         cam = Camera.main;
-        cam.GetComponent<FollowCamera>().focus = transform;
+        //cam.GetComponent<FollowCamera>().focus = transform;
         CharacterTR = GetComponent<Transform>();
         animator = GetComponent<Animator>();
         CharacterRigidbody = GetComponent<Rigidbody>();
         CharacterRotatorTR = transform.Find("Rotator");
     }
+    // Start is called before the first frame update
+    void Start()
+    {
+     
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (!base.hasAuthority) return;
+        //if (!base.hasAuthority) return;
 
         MousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
@@ -127,7 +132,8 @@ public class MovementController : NetworkBehaviour
             
         }
 
-        CharacterRigidbody.AddForce(Velocity * 100);
+        //CharacterRigidbody.AddForce(Velocity * 100);
+        transform.Translate(Velocity);
         animator.SetFloat("velocity", Mathf.Lerp(0, 1, (Velocity.sqrMagnitude * 100) / (MaxForwardVelocity * 0.01f)));
         if(DashAccelation > 0)
             animator.SetFloat("velocity", 0f);
@@ -177,7 +183,7 @@ public class MovementController : NetworkBehaviour
     }
 
     public void ApplyForce(Vector3 force){
-        if (!base.hasAuthority) return;
+        //if (!base.hasAuthority) return;
 
         Vector3 f = force / this.Mass;
         Magnitude += f;
@@ -185,7 +191,7 @@ public class MovementController : NetworkBehaviour
 
     public void ApplyKnockback(Vector3 knockbackMagnitude)
     {
-        if (!base.hasAuthority) return;
+        //if (!base.hasAuthority) return;
 
         ApplyForce(knockbackMagnitude);
     }
