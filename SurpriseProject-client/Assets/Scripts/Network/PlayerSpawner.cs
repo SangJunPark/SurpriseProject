@@ -19,17 +19,15 @@ namespace MirrorBasics
             spawnPoints.Remove(transform);
         }
 
-        public override void OnStartServer()
+        public override void OnStartClient()
         {
-            Debug.Log("OnStartServer!!!");
-            CustomNetworkManager.OnServerReadied += SpawnPlayer;
+            Debug.Log("player spawner start client");
         }
 
+        public override void OnStartServer() => CustomNetworkManager.OnServerReadied += SpawnPlayer;
+
         [ServerCallback]
-        private void OnDestroy() {
-            CustomNetworkManager.OnServerReadied -= SpawnPlayer;
-            
-        }
+        private void OnDestroy() => CustomNetworkManager.OnServerReadied -= SpawnPlayer;
 
         [Server]
         public void SpawnPlayer(NetworkConnection conn) {

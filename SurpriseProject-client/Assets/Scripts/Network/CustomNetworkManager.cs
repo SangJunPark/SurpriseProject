@@ -19,6 +19,11 @@ namespace MirrorBasics
         public override void OnServerReady(NetworkConnection conn)
         {
             base.OnServerReady(conn);
+        }
+
+        public override void OnClientSceneChanged(NetworkConnection conn) {
+            base.OnClientSceneChanged(conn);
+            Debug.Log(OnServerReadied);
             OnServerReadied?.Invoke(conn);
         }
     }

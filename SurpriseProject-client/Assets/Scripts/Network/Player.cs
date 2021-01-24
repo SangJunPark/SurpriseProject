@@ -115,7 +115,7 @@ namespace MirrorBasics
         {
             Debug.Log($"Game {matchID} Starting!");
             //load game scene?
-            StartCoroutine(StartGameScene(2));
+            // StartCoroutine(StartGameScene(2));
         }
 
         IEnumerator StartGameScene(int sceneID)
