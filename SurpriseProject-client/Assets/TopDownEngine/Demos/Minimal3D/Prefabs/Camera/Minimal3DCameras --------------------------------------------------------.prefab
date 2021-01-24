@@ -164,6 +164,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.627451}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -275,6 +277,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.509}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -386,6 +390,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.21960786, g: 0.8000001, b: 0.8862746, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -427,6 +433,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114724861072142944}
+        m_TargetAssemblyTypeName: 
         m_MethodName: GoToLevel
         m_Mode: 1
         m_Arguments:
@@ -441,6 +448,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: XReleased
         m_Mode: 1
         m_Arguments:
@@ -455,6 +463,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: XPressed
         m_Mode: 1
         m_Arguments:
@@ -602,6 +611,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.21960786, g: 0.8000001, b: 0.8862746, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -643,6 +654,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114829062562119128}
+        m_TargetAssemblyTypeName: 
         m_MethodName: GoToLevel
         m_Mode: 1
         m_Arguments:
@@ -657,6 +669,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: XReleased
         m_Mode: 1
         m_Arguments:
@@ -671,6 +684,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: XPressed
         m_Mode: 1
         m_Arguments:
@@ -928,6 +942,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.21960786, g: 0.8000001, b: 0.8862746, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -969,6 +985,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:
@@ -983,6 +1000,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114436628927152862}
+        m_TargetAssemblyTypeName: 
         m_MethodName: ReloadLevel
         m_Mode: 1
         m_Arguments:
@@ -997,6 +1015,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: XPressed
         m_Mode: 1
         m_Arguments:
@@ -1260,7 +1279,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -1447,6 +1466,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.627451}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1520,6 +1541,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1594,7 +1617,10 @@ MonoBehaviour:
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
+    ModeOverride: 0
     LensShift: {x: 0, y: 0}
+    GateFit: 0
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1825,6 +1851,8 @@ MonoBehaviour:
   m_Material: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1960,6 +1988,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.21960786, g: 0.8000001, b: 0.8862746, a: 1}
   m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2053,6 +2083,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.21960786, g: 0.8000001, b: 0.8862746, a: 1}
   m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2149,6 +2181,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2255,6 +2289,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2289,6 +2325,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114714365709490776}
+        m_TargetAssemblyTypeName: 
         m_MethodName: SetMovement
         m_Mode: 0
         m_Arguments:
@@ -2423,6 +2460,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.21960786, g: 0.8000001, b: 0.8862746, a: 1}
   m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2519,6 +2558,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2625,6 +2666,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2654,6 +2697,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114714365709490776}
+        m_TargetAssemblyTypeName: 
         m_MethodName: RunButtonDown
         m_Mode: 1
         m_Arguments:
@@ -2668,6 +2712,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114714365709490776}
+        m_TargetAssemblyTypeName: 
         m_MethodName: RunButtonUp
         m_Mode: 1
         m_Arguments:
@@ -2682,6 +2727,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114714365709490776}
+        m_TargetAssemblyTypeName: 
         m_MethodName: RunButtonPressed
         m_Mode: 1
         m_Arguments:
@@ -2763,25 +2809,134 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a42a23ce4f9ed24abde69beacbef2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartValue: 0
-  EndValue: 1
+  PlayerID: Player1
+  ForegroundBar: {fileID: 224569093236522444}
+  DelayedBarDecreasing: {fileID: 224376368703395276}
+  DelayedBarIncreasing: {fileID: 0}
+  MinimumBarFillValue: 0
+  MaximumBarFillValue: 1
+  SetInitialFillValueOnStart: 0
+  InitialFillValue: 0
   BarDirection: 0
   FillMode: 0
   TimeScale: 0
+  BarFillMode: 0
   LerpForegroundBar: 1
-  LerpForegroundBarSpeed: 15
-  Delay: 1
-  LerpDelayedBar: 1
-  LerpDelayedBarSpeed: 15
-  PlayerID: Player1
-  DelayedBar: {fileID: 224376368703395276}
-  ForegroundBar: {fileID: 224569093236522444}
+  LerpForegroundBarSpeedDecreasing: 15
+  LerpForegroundBarSpeedIncreasing: 15
+  LerpForegroundBarDurationDecreasing: 0.2
+  LerpForegroundBarDurationIncreasing: 0.2
+  LerpForegroundBarCurveDecreasing:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  LerpForegroundBarCurveIncreasing:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  DecreasingDelay: 1
+  LerpDecreasingDelayedBar: 1
+  LerpDecreasingDelayedBarSpeed: 15
+  LerpDecreasingDelayedBarDuration: 0.2
+  LerpDecreasingDelayedBarCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  IncreasingDelay: 1
+  LerpIncreasingDelayedBar: 1
+  LerpIncreasingDelayedBarSpeed: 15
+  LerpIncreasingDelayedBarDuration: 0.2
+  LerpIncreasingDelayedBarCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   BumpScaleOnChange: 1
   BumpOnIncrease: 0
+  BumpOnDecrease: 0
   BumpDuration: 0.2
   ChangeColorWhenBumping: 1
   BumpColor: {r: 1, g: 1, b: 1, a: 1}
-  BumpAnimationCurve:
+  BumpScaleAnimationCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -2892,9 +3047,36 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  AutoUpdating: 0
-  BarProgress: 1
+  OnBump:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarMovementDecreasingStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarMovementDecreasingStop:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarMovementIncreasingStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBarMovementIncreasingStop:
+    m_PersistentCalls:
+      m_Calls: []
+  PercentageText: {fileID: 0}
+  TextPrefix: 
+  TextSuffix: 
+  TextValueMultiplier: 1
+  TextFormat: '{000}'
+  DebugNewTargetValue: 0
+  DebugUpdateBarButton: 0
+  DebugSetBarButton: 0
   TestBumpButton: 0
+  Plus10PercentButton: 0
+  Minus10PercentButton: 0
+  BarProgress: 1
+  BarTarget: 0
+  DelayedBarIncreasingProgress: 0
+  DelayedBarDecreasingProgress: 0
 --- !u!1 &1578255067430554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2959,6 +3141,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3016,6 +3200,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114917629537064006}
+        m_TargetAssemblyTypeName: 
         m_MethodName: PauseButtonAction
         m_Mode: 1
         m_Arguments:
@@ -3124,6 +3309,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3153,6 +3340,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: UpPressedFirstTime
         m_Mode: 1
         m_Arguments:
@@ -3167,6 +3355,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: UpReleased
         m_Mode: 1
         m_Arguments:
@@ -3181,6 +3370,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114714365709490776}
+        m_TargetAssemblyTypeName: 
         m_MethodName: SetVerticalMovement
         m_Mode: 0
         m_Arguments:
@@ -3259,6 +3449,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.21960786, g: 0.8000001, b: 0.8862746, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3300,6 +3492,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:
@@ -3314,6 +3507,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114506046085448086}
+        m_TargetAssemblyTypeName: 
         m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:
@@ -3328,6 +3522,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: XPressed
         m_Mode: 1
         m_Arguments:
@@ -3484,6 +3679,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3574,6 +3771,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3735,6 +3934,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3993,6 +4194,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4022,6 +4225,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114714365709490776}
+        m_TargetAssemblyTypeName: 
         m_MethodName: ShootButtonDown
         m_Mode: 1
         m_Arguments:
@@ -4036,6 +4240,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114714365709490776}
+        m_TargetAssemblyTypeName: 
         m_MethodName: ShootButtonUp
         m_Mode: 1
         m_Arguments:
@@ -4050,6 +4255,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114714365709490776}
+        m_TargetAssemblyTypeName: 
         m_MethodName: ShootButtonPressed
         m_Mode: 1
         m_Arguments:
@@ -4145,6 +4351,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.21960786, g: 0.8000001, b: 0.8862746, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4186,6 +4394,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: PauseButtonAction
         m_Mode: 1
         m_Arguments:
@@ -4200,6 +4409,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114225297514422998}
+        m_TargetAssemblyTypeName: 
         m_MethodName: UnPause
         m_Mode: 1
         m_Arguments:
@@ -4214,6 +4424,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: XPressed
         m_Mode: 1
         m_Arguments:
@@ -4419,6 +4630,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4448,6 +4661,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: RightPressedFirstTime
         m_Mode: 1
         m_Arguments:
@@ -4462,6 +4676,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: RightReleased
         m_Mode: 1
         m_Arguments:
@@ -4476,6 +4691,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114714365709490776}
+        m_TargetAssemblyTypeName: 
         m_MethodName: SetHorizontalMovement
         m_Mode: 0
         m_Arguments:
@@ -4563,6 +4779,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4592,6 +4810,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114714365709490776}
+        m_TargetAssemblyTypeName: 
         m_MethodName: SwitchWeaponButtonDown
         m_Mode: 1
         m_Arguments:
@@ -4606,6 +4825,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114714365709490776}
+        m_TargetAssemblyTypeName: 
         m_MethodName: SwitchWeaponButtonUp
         m_Mode: 1
         m_Arguments:
@@ -4620,6 +4840,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114714365709490776}
+        m_TargetAssemblyTypeName: 
         m_MethodName: SwitchWeaponButtonPressed
         m_Mode: 1
         m_Arguments:
@@ -4724,6 +4945,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4753,6 +4976,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114714365709490776}
+        m_TargetAssemblyTypeName: 
         m_MethodName: DashButtonDown
         m_Mode: 1
         m_Arguments:
@@ -4767,6 +4991,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114714365709490776}
+        m_TargetAssemblyTypeName: 
         m_MethodName: DashButtonUp
         m_Mode: 1
         m_Arguments:
@@ -4781,6 +5006,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114714365709490776}
+        m_TargetAssemblyTypeName: 
         m_MethodName: DashButtonPressed
         m_Mode: 1
         m_Arguments:
@@ -4822,7 +5048,7 @@ GameObject:
   - component: {fileID: 4776084761794064}
   - component: {fileID: 20646998284766860}
   - component: {fileID: 124846487602988218}
-  - component: {fileID: 114905645026365078}
+  - component: {fileID: 8611960640201426826}
   - component: {fileID: 114714365709490776}
   m_Layer: 0
   m_Name: UICamera
@@ -4898,7 +5124,7 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737468962540040}
   m_Enabled: 1
---- !u!114 &114905645026365078
+--- !u!114 &8611960640201426826
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4907,24 +5133,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1737468962540040}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b45c07d1fd86b2c488aeed1a9e84e924, type: 3}
+  m_Script: {fileID: 11500000, guid: cf6e5061b0b279b4394770952b348a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainCanvas: {fileID: 223698241362165482}
-  HUD: {fileID: 1663800712547734}
-  HealthBars:
-  - {fileID: 114677896254980732}
-  DashBars:
-  - {fileID: 114288385080940004}
-  AmmoDisplays:
-  - {fileID: 0}
-  PauseScreen: {fileID: 1253938263332004}
-  DeathScreen: {fileID: 1041692957302306}
-  Buttons: {fileID: 225035570663637244}
-  Arrows: {fileID: 225004371250265768}
-  Joystick: {fileID: 225721415608772458}
+  MainCanvas: {fileID: 0}
+  HUD: {fileID: 0}
+  HealthBars: []
+  DashBars: []
+  AmmoDisplays: []
+  PauseScreen: {fileID: 0}
+  DeathScreen: {fileID: 0}
+  Buttons: {fileID: 0}
+  Arrows: {fileID: 0}
+  Joystick: {fileID: 0}
   PointsText: {fileID: 0}
   LevelText: {fileID: 0}
+  PointsTextPattern: 000000
+  CounterText: {fileID: 0}
 --- !u!114 &114714365709490776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5021,6 +5246,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5050,6 +5277,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114714365709490776}
+        m_TargetAssemblyTypeName: 
         m_MethodName: JumpButtonDown
         m_Mode: 1
         m_Arguments:
@@ -5061,6 +5289,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 114714365709490776}
+        m_TargetAssemblyTypeName: 
         m_MethodName: InteractButtonDown
         m_Mode: 1
         m_Arguments:
@@ -5075,6 +5304,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114714365709490776}
+        m_TargetAssemblyTypeName: 
         m_MethodName: JumpButtonUp
         m_Mode: 1
         m_Arguments:
@@ -5086,6 +5316,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 114714365709490776}
+        m_TargetAssemblyTypeName: 
         m_MethodName: InteractButtonUp
         m_Mode: 1
         m_Arguments:
@@ -5100,6 +5331,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114714365709490776}
+        m_TargetAssemblyTypeName: 
         m_MethodName: JumpButtonPressed
         m_Mode: 1
         m_Arguments:
@@ -5270,6 +5502,7 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!114 &114216555280881024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5350,6 +5583,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.21960786, g: 0.8000001, b: 0.8862746, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5391,6 +5626,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:
@@ -5405,6 +5641,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114020879336542386}
+        m_TargetAssemblyTypeName: 
         m_MethodName: ReloadLevel
         m_Mode: 1
         m_Arguments:
@@ -5419,6 +5656,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: XPressed
         m_Mode: 1
         m_Arguments:
@@ -5576,6 +5814,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5605,6 +5845,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: LeftPressedFirstTime
         m_Mode: 1
         m_Arguments:
@@ -5619,6 +5860,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: LeftReleased
         m_Mode: 1
         m_Arguments:
@@ -5633,6 +5875,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114714365709490776}
+        m_TargetAssemblyTypeName: 
         m_MethodName: SetHorizontalMovement
         m_Mode: 0
         m_Arguments:
@@ -5703,12 +5946,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
   m_LookaheadTime: 0.239
   m_LookaheadSmoothing: 10
   m_LookaheadIgnoreY: 0
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 2
+  m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_CameraDistance: 29.19
@@ -5809,6 +6054,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5882,6 +6129,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5957,6 +6206,8 @@ MonoBehaviour:
   m_Material: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.23921569}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5984,6 +6235,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Channel: 0
   FlashID: 0
+  DebugSettings:
+    Channel: 0
+    FlashColor: {r: 1, g: 1, b: 1, a: 1}
+    FlashDuration: 0.2
+    FlashAlpha: 1
+    FlashID: 0
+  DebugTestButton: 0
 --- !u!225 &225956808883084114
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -6057,6 +6315,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.509}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6131,6 +6391,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.21960786, g: 0.8000001, b: 0.8862746, a: 1}
   m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6237,6 +6499,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6348,6 +6612,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6452,6 +6718,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6481,6 +6749,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: DownPressedFirstTime
         m_Mode: 1
         m_Arguments:
@@ -6495,6 +6764,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: DownReleased
         m_Mode: 1
         m_Arguments:
@@ -6509,6 +6779,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114714365709490776}
+        m_TargetAssemblyTypeName: 
         m_MethodName: SetVerticalMovement
         m_Mode: 0
         m_Arguments:
@@ -6583,6 +6854,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6753,6 +7026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CameraTransform: {fileID: 4195150596186120}
   FocusTargets: []
+  Offset: {x: 0, y: 0, z: 0}
   FocusTargetID: 0
   Aperture: 1.25
 --- !u!114 &1592226061931204589

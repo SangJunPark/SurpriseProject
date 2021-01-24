@@ -47,9 +47,9 @@ namespace MoreMountains.FeedbacksForThirdParty
         /// </summary>
         void Update()
         {
-            float distance = Vector3.Distance(CameraTransform.position, FocusTargets[Mathf.FloorToInt(FocusTargetID)].position + Offset);
-            _depthOfField.focusDistance.Override(distance);
-            _depthOfField.aperture.Override(Aperture);
+            //float distance = Vector3.Distance(CameraTransform.position, FocusTargets[Mathf.FloorToInt(FocusTargetID)].position + Offset);
+            //_depthOfField.focusDistance.Override(distance);
+            //_depthOfField.aperture.Override(Aperture);
         }
     }
 }

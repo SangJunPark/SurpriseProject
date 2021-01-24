@@ -83,7 +83,7 @@ public class SPCharacterMovement : CharacterMovement
         {
             _movementVector = Vector3.zero;
         }
-        Debug.Log("Magnitude : " + Magnitude + " friction : " + _friction + " movevec : " + _movementVector);
+        //Debug.Log("Magnitude : " + Magnitude + " friction : " + _friction + " movevec : " + _movementVector);
         _controller.SetMovement(_movementVector);
     }
 

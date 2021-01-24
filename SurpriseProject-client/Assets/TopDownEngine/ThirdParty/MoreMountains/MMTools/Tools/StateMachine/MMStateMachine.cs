@@ -113,6 +113,7 @@ namespace MoreMountains.Tools
 		/// <summary>
 		/// Returns the character to the state it was in before its current state
 		/// </summary>
+		/// 
 		public virtual void RestorePreviousState()
 		{
 			// we restore our previous state
