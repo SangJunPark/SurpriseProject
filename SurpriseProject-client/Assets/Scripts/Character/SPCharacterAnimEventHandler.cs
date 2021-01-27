@@ -2,18 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SPCharacterAnimEventHandler : MonoBehaviour
+public abstract class SPCharacterAnimEventHandler : MonoBehaviour
 {
-
-    // Start is called before the first frame update
-    void Start()
+    void OnAttackStart()
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnAttackEnd()
     {
-        
     }
+
+    /*void*/
 }

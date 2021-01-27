@@ -48,18 +48,18 @@ public class SPCharacterMovement : CharacterMovement
             }
         }
 
-        
-            _acceleration = CalculateAccelation();
-            float deceleration = CalculateDeceleration();
 
-            Vector3 _friction = CalculateFriction();
+        _acceleration = CalculateAccelation();
+        float deceleration = CalculateDeceleration();
 
-            _frameVelocity.Set(_normalizedInput.x, 0, _normalizedInput.y);
-            _frameVelocity *= (_acceleration) * Time.fixedDeltaTime;
+        Vector3 _friction = CalculateFriction();
 
-            ApplyForce(_frameVelocity);
-            ApplyForce(_friction);
-        
+        _frameVelocity.Set(_normalizedInput.x, 0, _normalizedInput.y);
+        _frameVelocity *= (_acceleration) * Time.fixedDeltaTime;
+
+        ApplyForce(_frameVelocity);
+        ApplyForce(_friction);
+
 
         _movementVector = Magnitude;
 
@@ -85,6 +85,7 @@ public class SPCharacterMovement : CharacterMovement
         }
         //Debug.Log("Magnitude : " + Magnitude + " friction : " + _friction + " movevec : " + _movementVector);
         _controller.SetMovement(_movementVector);
+        Debug.Log(_movementVector);
     }
 
     Vector3 CalculateFriction()
@@ -100,7 +101,7 @@ public class SPCharacterMovement : CharacterMovement
 
     float CalculateAccelation()
     {
-        if(_normalizedInput.sqrMagnitude > 0)
+        if (_normalizedInput.sqrMagnitude > 0)
         {
             return Mathf.Lerp(0, Acceleration, Acceleration * Time.deltaTime);
         }
