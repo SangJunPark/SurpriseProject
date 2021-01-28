@@ -1696,7 +1696,43 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1187079754}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 157526437}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1398540333}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 157526439}
+        m_TargetAssemblyTypeName: PlayerNameInput, Assembly-CSharp
+        m_MethodName: SavePlayerName
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1187079754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1915,15 +1951,19 @@ MonoBehaviour:
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 0}
+  playerPrefab: {fileID: 4144806731019322675, guid: 17e985f7e74b07249a110ae77991fefd,
+    type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs: []
   minPlayers: 2
-  menuScene: 
-  roomPlayerPrefab: {fileID: 0}
-  gamePlayerPrefab: {fileID: 0}
-  playerSpawnSystem: {fileID: 0}
+  menuScene: Assets/Scenes/Network/Lobby.unity
+  roomPlayerPrefab: {fileID: 2604757061562935131, guid: ff8a7aeadd84c5347bca57c3501ee045,
+    type: 3}
+  gamePlayerPrefab: {fileID: 5057744635234911534, guid: cc4c5ed392af7904fbe7041d0a12d30c,
+    type: 3}
+  playerSpawnSystem: {fileID: 7918623990244675876, guid: 87e3b53c327140548875745d6710396e,
+    type: 3}
 --- !u!1 &1398540333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1940,7 +1980,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1398540334
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2601,7 +2641,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2025822146
 RectTransform:
   m_ObjectHideFlags: 0
