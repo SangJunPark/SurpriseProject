@@ -2,17 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IElementalReaction : MonoBehaviour
+namespace SP
 {
-    // Start is called before the first frame update
-    void Start()
+    public interface IElementalReaction
     {
-        
+        void MatchAndCreate();
     }
 
-    // Update is called once per frame
-    void Update()
+    public class SPElementalReactionExhusted : IElementalReaction
     {
-        
+        public void MatchAndCreate() { }
+    }
+
+    public class SPElementalReactionSoaked : IElementalReaction
+    {
+        public void MatchAndCreate() { }
+    }
+
+    public class SPElementalReactionBurn : IElementalReaction
+    {
+        public void MatchAndCreate() { }
+    }
+
+    public class SPElementalReactionFactory
+    {
+
+        public void LookUpPossibleReaction(SPElemental elemental)
+        {
+
+        }
     }
 }
+
