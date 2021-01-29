@@ -7,8 +7,7 @@ namespace SP
 {
     public class SPCharacterElements : MonoBehaviour
     {
-        IElemental Owner;
-        SPElemental Elemental;
+        SPElemental OwnerElemental;
         ElementalTypes OrbElements;
 
         [SerializeField]
@@ -17,15 +16,15 @@ namespace SP
 
         void Awake()
         {
-            Elemental.OnAttached += () => { };
-            Elemental.OnDetached += () => { };
-            Elemental.Attach(BornElements);
+            OwnerElemental.OnAttached += () => { };
+            OwnerElemental.OnDetached += () => { };
+            OwnerElemental.Attach(BornElements);
         }
 
         //1Frame동안 중첩되는 원소들을 수집한 이후에 한꺼번에 처리
         void LateUpdate()
         {
-            
+            SPElementalReactionFactory.LookUpPossibleReaction(OwnerElemental.ElementSockets);
         }
     }
 }
