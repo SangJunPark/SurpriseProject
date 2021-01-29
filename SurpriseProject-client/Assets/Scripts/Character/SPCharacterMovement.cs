@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.TopDownEngine;
-
+using Mirror;
 public class SPCharacterMovement : CharacterMovement
 {
+    [SerializeField] NetworkIdentity identity;
     Vector3 Magnitude = Vector3.zero;
     Vector3 _frameVelocity = Vector3.zero;
 
@@ -21,6 +22,7 @@ public class SPCharacterMovement : CharacterMovement
     }
     protected override void SetMovement()
     {
+        if(!identity.hasAuthority) return;
         //_movementVector = Vector3.zero;
         _currentInput = Vector2.zero;
         _frameVelocity = Vector3.zero;
@@ -85,7 +87,7 @@ public class SPCharacterMovement : CharacterMovement
         }
         //Debug.Log("Magnitude : " + Magnitude + " friction : " + _friction + " movevec : " + _movementVector);
         _controller.SetMovement(_movementVector);
-        Debug.Log(_movementVector);
+        // Debug.Log(_movementVector);
     }
 
     Vector3 CalculateFriction()
