@@ -22,7 +22,7 @@ public class SPCharacterMovement : CharacterMovement
     }
     protected override void SetMovement()
     {
-        if(!identity.hasAuthority) return;
+        if(identity && !identity.hasAuthority) return;
         //_movementVector = Vector3.zero;
         _currentInput = Vector2.zero;
         _frameVelocity = Vector3.zero;
@@ -40,12 +40,12 @@ public class SPCharacterMovement : CharacterMovement
         {
             if (_normalizedInput.sqrMagnitude == 0)
             {
-                _acceleration = Mathf.Lerp(_acceleration, 0f, Deceleration * Time.deltaTime);
-                _lerpedInput = Vector2.Lerp(_lerpedInput, _lerpedInput * _acceleration, Time.deltaTime);
+                _acceleration = Mathf.Lerp(_acceleration, 0f, Deceleration * Time.fixedDeltaTime);
+                _lerpedInput = Vector2.Lerp(_lerpedInput, _lerpedInput * _acceleration, Time.fixedDeltaTime);
             }
             else
             {
-                _acceleration = Mathf.Lerp(_acceleration, 1f, Acceleration * Time.deltaTime);
+                _acceleration = Mathf.Lerp(_acceleration, 1f, Acceleration * Time.fixedDeltaTime);
                 _lerpedInput = AnalogInput ? Vector2.ClampMagnitude(_currentInput, _acceleration) : Vector2.ClampMagnitude(_normalizedInput, _acceleration);
             }
         }
@@ -67,7 +67,7 @@ public class SPCharacterMovement : CharacterMovement
 
         if (InterpolateMovementSpeed)
         {
-            _movementSpeed = Mathf.Lerp(_movementSpeed, MovementSpeed * MovementSpeedMultiplier, _acceleration * Time.deltaTime);
+            _movementSpeed = Mathf.Lerp(_movementSpeed, MovementSpeed * MovementSpeedMultiplier, _acceleration * Time.fixedDeltaTime);
         }
         else
         {
@@ -105,7 +105,7 @@ public class SPCharacterMovement : CharacterMovement
     {
         if (_normalizedInput.sqrMagnitude > 0)
         {
-            return Mathf.Lerp(0, Acceleration, Acceleration * Time.deltaTime);
+            return Mathf.Lerp(0, Acceleration, Acceleration * Time.fixedDeltaTime);
         }
         return 0;
     }
@@ -114,7 +114,7 @@ public class SPCharacterMovement : CharacterMovement
     {
         if (_normalizedInput.sqrMagnitude == 0)
         {
-            return Mathf.Lerp(_acceleration, 0, Deceleration * Time.deltaTime);
+            return Mathf.Lerp(_acceleration, 0, Deceleration * Time.fixedDeltaTime);
         }
         return 0;
     }
@@ -124,5 +124,13 @@ public class SPCharacterMovement : CharacterMovement
         Vector3 f = force / Mass;
         Magnitude += f;
         Magnitude = Vector3.ClampMagnitude(Magnitude, 2);
+    }
+
+    private void OnGUI()
+    {
+        GUI.Label(new Rect(25, 25, 100, 30), _movementVector.ToString());
+        GUI.Label(new Rect(25, 100, 100, 30), _currentInput.ToString());
+        GUI.Label(new Rect(25, 300, 100, 30), Time.fixedDeltaTime.ToString());
+        GUI.Label(new Rect(25, 350, 100, 30), _normalizedInput.ToString());
     }
 }

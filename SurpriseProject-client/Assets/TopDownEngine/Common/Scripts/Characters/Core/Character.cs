@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+
 using MoreMountains.Tools;
 using System.Collections.Generic;
 using System;
@@ -9,8 +10,8 @@ namespace MoreMountains.TopDownEngine
 {
     /// <summary>
     /// This class will pilot the TopDownController component of your character.
-    /// This is where you'll implement all of your character's game rules, like jump, dash, shoot, stuff like that.노브랜드 수원망포점
-    /// Animator parameters : Grounded (bool), xSpeed (float), ySpeed (float), 영통e편한세상2차1단지아파트
+    /// This is where you'll implement all of your character's game rules, like jump, dash, shoot, stuff like that.
+    /// Animator parameters : Grounded (bool), xSpeed (float), ySpeed (float),
     /// CollidingLeft (bool), CollidingRight (bool), CollidingBelow (bool), CollidingAbove (bool), Idle (bool)
     /// </summary>
     [SelectionBase]

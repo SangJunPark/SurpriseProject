@@ -12,6 +12,7 @@ namespace SP
     public class SPGUIManager : GUIManager
     {
         public Text CounterText;
+        public PlayerInfoBar PlayerInfoUI;
 
         protected override void Start()
         {
@@ -23,6 +24,11 @@ namespace SP
         {
             CounterText.enabled = !String.IsNullOrEmpty(text);
             CounterText.text = text;
+        }
+
+        public void VisiblePlayerInfoUI(bool visible = false)
+        {
+            PlayerInfoUI.enabled = visible;
         }
     }
 }

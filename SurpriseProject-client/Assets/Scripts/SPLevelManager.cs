@@ -14,6 +14,7 @@ namespace SP
 
         protected override void Start()
         {
+            Application.targetFrameRate = 60;
             BoundsCollider = _collider;
             InstantiatePlayableCharacters();
 
