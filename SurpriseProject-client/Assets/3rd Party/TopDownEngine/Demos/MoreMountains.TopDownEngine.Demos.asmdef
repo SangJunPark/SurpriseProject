@@ -3,7 +3,8 @@
     "references": [
         "GUID:a190093c124ab8f478ae9d6f43bc9d6e",
         "GUID:4a1cb1490dc4df8409b2580d6b44e75e",
-        "GUID:dad624460036b51448e1b1849358a96a"
+        "GUID:dad624460036b51448e1b1849358a96a",
+        "GUID:30817c1a0e6d646d99c048fc403f5979"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -16,5 +17,6 @@
         "MOREMOUNTAINS_FEEDBACKS",
         "MOREMOUNTAINS_TOOLS"
     ],
-    "versionDefines": []
+    "versionDefines": [],
+    "noEngineReferences": false
 }
