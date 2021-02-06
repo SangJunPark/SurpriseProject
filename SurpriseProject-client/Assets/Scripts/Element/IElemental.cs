@@ -12,6 +12,12 @@ namespace SP
     }
     public interface IElemental
     {
-        ElementalTypes[] ElementSockets { get; }
+        float CoolTime { get; }
+        float Duration { get; }
+        bool IsActive { get; set; }
+
+        bool IsExpired { get; set; }
+        ElementalTypes ElemType { get; }
+        //ElementalTypes[] ElementSockets { get; }
     }
 }

@@ -6,50 +6,42 @@ namespace SP
 {
     public abstract class SPElemental : IElemental
     {
-        public ElementalTypes[] ElementSockets => null;
+        private float CurrentTime;
+        public virtual bool IsActive { get; set; }
+        public virtual bool IsExpired { get; set; }
 
-        public delegate void OnAttachedDelegate();
-        public delegate void OnDetachedDelegate();
 
-        private OnAttachedDelegate _OnAttached;
-        public event OnAttachedDelegate OnAttached
+        public abstract bool CanTransition { get; }
+        public abstract float CoolTime { get; }
+        public abstract float Duration { get; }
+        public abstract ElementalTypes ElemType { get; }
+
+        public SPElemental()
         {
-            add
-            {
-                _OnAttached += value;
-            }
-            remove
-            {
-                _OnAttached -= value;
-            }
+            CurrentTime = 0;
         }
 
-        private OnDetachedDelegate _OnDetached;
-        public event OnDetachedDelegate OnDetached
+        public virtual void TransitionTo(SPElementalContainer to)
         {
-            add
+            //to.Attach(this);
+            //SPElementalReaction
+        }
+
+        public virtual void TransitionFrom(SPElementalContainer from)
+        {
+
+            //from.Attach(this);
+        }
+        public void UpdateElement()
+        {
+            if (IsActive)
             {
-                _OnDetached += value;
+                CurrentTime += Time.fixedDeltaTime;
+                if (CurrentTime >= Duration)
+                {
+                    IsActive = false;
+                }
             }
-            remove
-            {
-                _OnDetached -= value;
-            }
-        }
-
-        public virtual void Attach(ElementalTypes elemType)
-        {
-            _OnAttached?.Invoke();
-        }
-
-        public virtual void Detach(ElementalTypes elemType)
-        {
-            _OnDetached?.Invoke();
-        }
-
-        public virtual void Transition()
-        {
-
         }
     }
 }
