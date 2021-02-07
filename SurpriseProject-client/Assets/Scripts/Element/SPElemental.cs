@@ -1,9 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security;
 using UnityEngine;
 
 namespace SP
 {
+    public struct SPElementalCreationDesc
+    {
+        public float CoolTime { get; private set; }
+        public float Duration { get; private set; }
+
+        public SPElementalCreationDesc(float coolTime, float duration)
+        {
+            CoolTime = coolTime;
+            Duration = duration;
+        }
+    }
+
     public abstract class SPElemental : IElemental
     {
         private float CurrentTime;
@@ -19,6 +32,8 @@ namespace SP
         public SPElemental()
         {
             CurrentTime = 0;
+            IsExpired = false;
+
         }
 
         public virtual void TransitionTo(SPElementalContainer to)
@@ -40,6 +55,7 @@ namespace SP
                 if (CurrentTime >= Duration)
                 {
                     IsActive = false;
+                    IsExpired = true;
                 }
             }
         }

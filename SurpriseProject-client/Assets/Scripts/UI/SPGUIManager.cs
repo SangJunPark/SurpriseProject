@@ -18,6 +18,7 @@ namespace SP
         {
             base.Start();
             CounterText.enabled = false;
+            PlayerInfoUI.enabled = false;
         }
 
         public void SetCounterText(string text)

@@ -7,7 +7,7 @@ namespace SP
 {
     public class SPElementalContainer
     {
-        public SPElemental[] ElementSockets => null;
+        public List<SPElemental> ElementSockets;
 
         public delegate void OnAttachedDelegate();
         public delegate void OnDetachedDelegate();
@@ -38,13 +38,20 @@ namespace SP
             }
         }
 
-        public virtual void Attach(IElemental elemental)
+        public SPElementalContainer()
         {
+            ElementSockets = new List<SPElemental>();
+        }
+
+        public virtual void Attach(SPElemental elemental)
+        {
+            ElementSockets.Add(elemental);
             _OnAttached?.Invoke();
         }
 
-        public virtual void Detach(IElemental elemental)
+        public virtual void Detach(SPElemental elemental)
         {
+            ElementSockets.Remove(elemental);
             _OnDetached?.Invoke();
         }
 
@@ -54,9 +61,13 @@ namespace SP
 
         public void UpdateContainer()
         {
-            for (int i = 0; i < ElementSockets.Length; ++i)
+            for (int i = 0; i < ElementSockets.Count; ++i)
             {
                 ElementSockets[i].UpdateElement();
+                if (ElementSockets[i].IsExpired)
+                {
+                    ElementSockets.Remove(ElementSockets[i]);
+                }
             }
         }
 
