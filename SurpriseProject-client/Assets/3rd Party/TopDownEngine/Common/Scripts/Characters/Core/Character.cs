@@ -5,7 +5,7 @@ using MoreMountains.Tools;
 using System.Collections.Generic;
 using System;
 using Random = UnityEngine.Random;
-
+using Mirror;
 namespace MoreMountains.TopDownEngine
 {
     /// <summary>
@@ -16,7 +16,7 @@ namespace MoreMountains.TopDownEngine
     /// </summary>
     [SelectionBase]
 	[AddComponentMenu("TopDown Engine/Character/Core/Character")] 
-	public class Character : MonoBehaviour
+	public class Character : NetworkBehaviour
     {
         /// the possible initial facing direction for your character
         public enum FacingDirections { West, East, North, South }

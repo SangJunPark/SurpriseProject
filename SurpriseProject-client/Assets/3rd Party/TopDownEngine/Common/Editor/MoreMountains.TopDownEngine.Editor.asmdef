@@ -1,6 +1,7 @@
 {
     "name": "MoreMountains.TopDownEngine.Editor",
     "references": [
+        "GUID:30817c1a0e6d646d99c048fc403f5979",
         "GUID:a190093c124ab8f478ae9d6f43bc9d6e",
         "GUID:4a1cb1490dc4df8409b2580d6b44e75e"
     ],
@@ -18,5 +19,6 @@
         "MOREMOUNTAINS_INVENTORYENGINE",
         "MOREMOUNTAINS_INTERFACE"
     ],
-    "versionDefines": []
+    "versionDefines": [],
+    "noEngineReferences": false
 }

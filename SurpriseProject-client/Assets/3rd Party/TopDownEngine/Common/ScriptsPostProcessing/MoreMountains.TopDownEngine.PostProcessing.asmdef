@@ -5,7 +5,8 @@
         "GUID:3ffbcc4f282d9a14f8d90044152ebedc",
         "GUID:dad624460036b51448e1b1849358a96a",
         "GUID:a190093c124ab8f478ae9d6f43bc9d6e",
-        "GUID:d60799ab2a985554ea1a39cd38695018"
+        "GUID:d60799ab2a985554ea1a39cd38695018",
+        "GUID:30817c1a0e6d646d99c048fc403f5979"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -23,5 +24,6 @@
             "expression": "2.0.0",
             "define": "MOREMOUNTAINS_POSTPROCESSING_INSTALLED"
         }
-    ]
+    ],
+    "noEngineReferences": false
 }

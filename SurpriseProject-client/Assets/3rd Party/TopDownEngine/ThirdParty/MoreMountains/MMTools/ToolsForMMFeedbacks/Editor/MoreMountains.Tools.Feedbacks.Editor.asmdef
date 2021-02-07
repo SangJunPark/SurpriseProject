@@ -1,6 +1,7 @@
 {
     "name": "MoreMountains.Tools.Feedbacks.Editor",
     "references": [
+        "GUID:30817c1a0e6d646d99c048fc403f5979",
         "GUID:b56951d4b6881a2498d9f58e16fb0cd0",
         "GUID:4a1cb1490dc4df8409b2580d6b44e75e",
         "GUID:dad624460036b51448e1b1849358a96a"
@@ -17,5 +18,6 @@
         "MOREMOUNTAINS_FEEDBACKS",
         "MOREMOUNTAINS_TOOLS"
     ],
-    "versionDefines": []
+    "versionDefines": [],
+    "noEngineReferences": false
 }
