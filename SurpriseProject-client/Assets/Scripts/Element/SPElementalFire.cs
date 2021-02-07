@@ -6,18 +6,6 @@ using UnityEngine;
 
 namespace SP
 {
-    public struct SPElementalCreationDesc
-    {
-        public float CoolTime { get; private set; }
-        public  float Duration { get; private set; }
-
-        public SPElementalCreationDesc(float coolTime, float duration)
-        {
-            CoolTime = coolTime;
-            Duration = duration;
-        }
-    }
-
     public class SPElementalFire : SPElemental
     {
         public override bool CanTransition => true;

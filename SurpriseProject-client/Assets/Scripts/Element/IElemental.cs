@@ -16,7 +16,7 @@ namespace SP
         float Duration { get; }
         bool IsActive { get; set; }
 
-        bool IsExpired { get; private set; }
+        bool IsExpired { get; set; }
         ElementalTypes ElemType { get; }
         //ElementalTypes[] ElementSockets { get; }
     }
