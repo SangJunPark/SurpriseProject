@@ -1067,6 +1067,7 @@ MonoBehaviour:
   SlidingSpeed: 15
   SlidingSpeedControl: 0.4
   SlidingDirectionControl: 1
+  identity: {fileID: 8839113357078556971}
 --- !u!114 &8839113357078557014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1315,6 +1316,7 @@ MonoBehaviour:
   AbilityPermitted: 1
   BlockingMovementStates: 
   BlockingConditionStates: 
+  identity: {fileID: 8839113357078556971}
   ButtonActivatedZone: {fileID: 0}
 --- !u!114 &8839113357078557019
 MonoBehaviour:

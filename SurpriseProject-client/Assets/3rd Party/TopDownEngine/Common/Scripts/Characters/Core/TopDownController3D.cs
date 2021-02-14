@@ -178,7 +178,7 @@ namespace MoreMountains.TopDownEngine
         /// <summary>
         /// On Update we process our Update computations if UpdateMode is set to Update
         /// </summary>
-        protected override void Update()
+        public override void Update()
         {
             base.Update();
             if (UpdateMode == UpdateModes.Update)

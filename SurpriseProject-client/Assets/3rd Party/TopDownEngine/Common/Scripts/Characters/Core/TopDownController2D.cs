@@ -189,7 +189,7 @@ namespace MoreMountains.TopDownEngine
         /// <summary>
         /// On update we determine our acceleration
         /// </summary>
-        protected override void Update()
+        public override void Update()
         {
             base.Update();
             Velocity = (_rigidBody.transform.position - _positionLastFrame) / Time.deltaTime;
