@@ -278,6 +278,7 @@ namespace MoreMountains.TopDownEngine
 		/// </summary>
 		public virtual void SetMovement()
 		{
+            return;
 			if (!IsMobile && InputDetectionActive)
 			{
 				if (SmoothMovement)
@@ -298,6 +299,7 @@ namespace MoreMountains.TopDownEngine
 		/// </summary>
 		public virtual void SetSecondaryMovement()
 		{
+            return;
 			if (!IsMobile && InputDetectionActive)
 			{
 				if (SmoothMovement)

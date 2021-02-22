@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.TopDownEngine;
 using Mirror;
+using SP;
 public class SPCharacterMovement : CharacterMovement
 {
     [SerializeField] NetworkIdentity identity;
@@ -27,8 +28,8 @@ public class SPCharacterMovement : CharacterMovement
         _currentInput = Vector2.zero;
         _frameVelocity = Vector3.zero;
 
-        _currentInput.x = _horizontalMovement;
-        _currentInput.y = _verticalMovement;
+        _currentInput.x = SPInputManager.Instance.InputMovement.x;
+        _currentInput.y = SPInputManager.Instance.InputMovement.y;
 
         _normalizedInput = _currentInput.normalized;
 
