@@ -25,6 +25,7 @@ namespace MoreMountains.Tools
 		/// <param name="currentState">Current state of the axis.</param>
 		public static ButtonStates ProcessAxisAsButton (string axisName, float threshold, ButtonStates currentState, AxisTypes AxisType = AxisTypes.Positive)
 		{
+            return;
 			float axisValue = Input.GetAxis (axisName);
 			ButtonStates returnState;
 
