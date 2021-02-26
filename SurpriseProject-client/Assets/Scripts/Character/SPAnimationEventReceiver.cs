@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
-public class SPAnimationEventReceiver : MonoBehaviour
-{
-    
+namespace SP{
+    [RequireComponent(typeof(Animator))]
+    public class SPAnimationEventReceiver : MonoBehaviour
+    {
+        void AnimEvent(string desc)
+        {
+            Debug.Log(desc);
+        }
+    }
 }
+

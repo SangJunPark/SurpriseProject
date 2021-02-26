@@ -237,6 +237,7 @@ namespace MoreMountains.TopDownEngine
         /// </summary>
         protected virtual void GetInputButtons()
 		{
+            return;
 			foreach(MMInput.IMButton button in ButtonList)
 			{
 				if (Input.GetButton(button.ButtonID))
